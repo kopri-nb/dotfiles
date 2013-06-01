@@ -1,0 +1,179 @@
+!!--!!--!!--!!--!!--!!
+!!      kopri's     !!
+!!    .Xresources   !!
+!!                  !! 
+!!--!!--!!--!!--!!--!!
+
+
+
+! font settings --------------------------------------------------------------
+
+Xft.autohint: true
+Xft.antialias: true
+Xft.hinting: true
+Xft.hintstyle: hintslight
+!Xft.dpi: 96
+Xft.rgba: rgb
+Xft.lcdfilter: lcddefault
+
+
+! urxvt config
+
+*foreground: #ebebeb
+*background: #151515
+
+!black
+*color0: #393939
+*color8: #474747
+
+!red
+*color1:     #BF1E2D
+*color9:     #E7212A
+
+!green
+*color2:     #9DBA3A
+*color10:    #A9C938
+
+!yellow
+*color3:  #d0d26b
+*color11: #c8bc45
+
+!blue
+*color4: #6d9cbe
+*color12: #d0d0ff
+
+!magenta
+*color5: #B7416E
+*color13: #E16A98
+
+!cyan
+*color6: #435d75
+*color14: #6e98a4
+
+!white
+*color7: #ebebeb
+*color15: #cccccc
+
+
+
+! fonts
+urxvt*font: 			xft:uushi:pixelsize=9:antialias=true:hinting=true
+URxvt*boldFont:         xft:uushi:pixelsize=9:antialias=true:hinting=true
+
+! settings
+urxvt*title: 			urxvt
+urxvt*termName: 		rxvt-256color
+urxvt*iconName:			rxvt-256color
+URxvt*scrollBar: False
+URxvt*scrollTtyOutput: False
+URxvt*scrollTtyKeypress: True
+URxvt*secondaryScroll: True
+URxvt*saveLines: 8000
+urxvt*geometry:         80x20
+URxvt.iconFile: /home/kopri/.icons/terminal.svg
+URxvt.internalBorder:    0
+URxvt.borderColor:       #CC6666
+URxvt*cursorBlink:       true
+urxvt*cursorColor:       #999999
+urxvt*colorBD:           #FFFFFF
+urxvt*colorUL:           #CCCCFF
+URxvt*mapAlert:          true
+URxvt*urgentOnBell:      true
+
+
+
+!Perl extensions
+URxvt.perl-ext-common : default,matcher,clipboard
+
+!Link launching
+URxvt.urlLauncher     : luakit
+URxvt.matcher.button  : 1
+URxvt*matcher.pattern.1:  \\bwww\\.[\\w-]+\\.[\\w./?&@#-]*[\\w/-]
+URxvt*visualBell:	        true
+URxvt*keysym.C-u:         perl:matcher
+
+
+!tabs
+URxvt.tabbed.tabbar-fg: 5
+URxvt.tabbed.tabbar-bg: 0
+URxvt.tabbed.tab-fg:    14
+URxvt.tabbed.tab-bg:    0
+
+!clipboard
+URxvt.keysym.M-c:   perl:clipboard:copy
+URxvt.keysym.M-v:   perl:clipboard:paste
+URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
+
+
+
+! xscreensaver ---------------------------------------------------------------
+
+!font settings
+xscreensaver.Dialog.headingFont:        -*-fixed-medium-r-*-*-14-*-*-*-*-*-*-*
+xscreensaver.Dialog.bodyFont:           -*-fixed-medium-r-*-*-14-*-*-*-*-*-*-*
+xscreensaver.Dialog.labelFont:          -*-fixed-medium-r-*-*-14-*-*-*-*-*-*-*
+xscreensaver.Dialog.unameFont:          -*-fixed-medium-r-*-*-14-*-*-*-*-*-*-*
+xscreensaver.Dialog.buttonFont:         -*-fixed-medium-r-*-*-14-*-*-*-*-*-*-*
+xscreensaver.Dialog.dateFont:           -*-fixed-medium-r-*-*-12-*-*-*-*-*-*-*
+xscreensaver.passwd.passwdFont:         -*-fixed-medium-r-*-*-14-*-*-*-*-*-*-*
+!general dialog box (affects main hostname, username, password text)
+xscreensaver.Dialog.foreground:         #101010
+xscreensaver.Dialog.background:         #D8D8D8
+xscreensaver.Dialog.topShadowColor:     #D8D8D8
+xscreensaver.Dialog.bottomShadowColor:  #D8D8D8
+xscreensaver.Dialog.Button.foreground:  #101010
+xscreensaver.Dialog.Button.background:  #E5E5E5
+!username/password input box and date text colour
+xscreensaver.Dialog.text.foreground:    #101010
+xscreensaver.Dialog.text.background:    #E5E5E5
+xscreensaver.Dialog.internalBorderWidth:24
+xscreensaver.Dialog.borderWidth:        0
+xscreensaver.Dialog.shadowThickness:    2
+!timeout bar (background is actually determined by Dialog.text.background)
+xscreensaver.passwd.thermometer.foreground:  #101010
+xscreensaver.passwd.thermometer.background:  #2E2E2E
+xscreensaver.passwd.thermometer.width:       8
+
+! Other X apps
+xcalc*ti.button1.vertDistance: 4
+xcalc*ti.button2.vertDistance: 4
+xcalc*ti.button3.vertDistance: 4
+xcalc*ti.button4.vertDistance: 4
+xcalc*ti.button5.vertDistance: 4
+xcalc*ti.background: gray90
+xcalc*ti.bevel.borderColor: gray65
+xcalc*ti.bevel.borderWidth: 1
+xcalc*ti.bevel.vertDistance: 4
+xcalc*ti.bevel.defaultDistance: 0
+xcalc*ti.bevel.background: rgb:b/c/b
+xcalc*ti.bevel.screen*background: rgb:b/c/b
+xcalc*ti.bevel.screen.borderColor: rgb:b/c/b
+xcalc*ti.bevel.screen.vertDistance: 10
+xcalc*ti.bevel.screen.horizDistance: 10
+xcalc*ti.bevel.screen*left: chainLeft
+xcalc*ti.bevel.screen*right: chainRight
+xcalc*ti.bevel.screen*top: chainTop
+xcalc*ti.bevel.screen*bottom: chainBottom
+xcalc*ti.bevel.screen*LCD.foreground: gray10
+xcalc*ti.bevel.screen*INV.vertDistance: 0
+xcalc*ti.Command.borderColor: gray65
+xcalc*ti.Command.background: gray85
+xcalc*ti.Command.foreground: gray30
+xcalc*ti.button5.background: rgb:e/b/b
+xcalc*ti.button20.background: rgb:e/d/c
+xcalc*ti.button25.background: rgb:e/d/c
+xcalc*ti.button30.background: rgb:e/d/c
+xcalc*ti.button35.background: rgb:e/d/c
+xcalc*ti.button40.background: rgb:b/b/e
+xcalc*ti.button22.background: gray95
+xcalc*ti.button23.background: gray95
+xcalc*ti.button24.background: gray95
+xcalc*ti.button27.background: gray95
+xcalc*ti.button28.background: gray95
+xcalc*ti.button29.background: gray95
+xcalc*ti.button32.background: gray95
+xcalc*ti.button33.background: gray95
+xcalc*ti.button34.background: gray95
+xcalc*ti.button37.background: gray95
+xcalc*ti.button38.background: gray95
+xcalc*ti.button39.background: gray95
