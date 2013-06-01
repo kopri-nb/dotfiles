@@ -1,0 +1,1 @@
+find . -type l -printf '%h/%f %l\n' | while read file link; do if [ ! -e "$link" ]; then ls -ld $file; fi;done

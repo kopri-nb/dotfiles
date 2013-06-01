@@ -1,0 +1,12 @@
+#!/bin/zsh
+
+function trash() {
+    a=`ls -A ~/.local/share/Trash/files | wc -l`
+    b=`ls -A ~/.local/share/Trash/info | wc -l`
+    c=`ls -A ~/.local/share/Trash/expunged | wc -l`
+    d=$(($a+$b+$c))
+    echo "$d"
+}
+
+trash
+exit

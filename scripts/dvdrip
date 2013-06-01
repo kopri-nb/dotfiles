@@ -1,0 +1,166 @@
+#!/bin/bash
+
+#GLOBALS
+
+DIN="/dev/dvd" #input
+DOUT="/home/$USER/download/rips" #output
+VBTR="4000" #bitrate
+ABTR="192" #bitrate
+
+discinfo(){
+    
+    dvdbackup -i ${DIN} -I > ${DOUT}/file
+    TITLE=`grep information ${DOUT}/file | cut -c44-56`
+    TNUM=`grep containing ${DOUT}/file | cut -c43-45`
+    rm ${DOUT}/file
+}
+
+discinfoi(){
+    
+    dvdbackup -i ${DIN} -I > ${DOUT}/file
+    TITLE[INDEX]=`grep information ${DOUT}/file | cut -c44-56`
+    TNUM[INDEX]=`grep containing ${DOUT}/file | cut -c43-45`
+    rm ${DOUT}/file
+}
+
+singled(){
+
+    discinfo
+    
+    dvdbackup -i ${DIN} -o ${DOUT} -M
+    sleep 10s
+    
+    handbrake -i ${DOUT}/${TITLE}/VIDEO_TS -o ${DOUT}/${TITLE}.mp4 -t ${TNUM} -U -F -f mp4 -e x264 -b ${VBTR} -B ${ABTR}
+    rm -rf ${DOUT}/${TITLE}
+
+}
+
+singleh(){
+
+    discinfo
+    
+    handbrake -i ${DIN} -o ${DOUT}/${TITLE}.mp4 -L -U -F -f mp4 -e x264 -b ${VBTR} -B ${ABTR}
+
+}
+
+multid(){
+
+    main
+
+    INDEX=0
+    let INDEXA=DISC-1
+
+    while [ $INDEX -lt $DISC ]; do
+    
+        discinfoi        
+
+        dvdbackup -i ${DIN} -o ${DOUT} -M
+    
+        if [ "$INDEX" -ne "$INDEXA" ]; then
+            echo "Please insert the next disc [enter]"
+            read CHNG
+        fi
+    
+    let INDEX=INDEX+1        
+    
+    done
+
+    INDEX=0
+    while [ $INDEX -lt $DISC ]; do
+        handbrake -i ${DOUT}/${TITLE[INDEX]}/VIDEO_TS -o ${DOUT}/${TITLE[INDEX]}.mp4 -t ${TNUM[INDEX]} -U -F -f mp4 -e x264 -b ${VBTR} -B ${ABTR}
+        rm -rf ${DOUT}/${TITLE[INDEX]}
+        let INDEX=INDEX+1
+    done
+    
+    exit
+}
+
+multih(){
+
+    main
+
+    INDEX=0
+    let INDEXA=DISC-1
+
+    while [ $INDEX -lt $DISC ]; do
+    
+        discinfoi
+        
+        handbrake -i ${DIN} -o ${DOUT}/${TITLE[INDEX]}.mp4 -L -U -F -f mp4 -e x264 -b ${VBTR} -B ${ABTR}
+    
+        if [ "$INDEX" -ne "$INDEXA" ]; then
+            echo "Please insert the next disc [enter]"
+            read CHNG
+        fi
+    
+        let INDEX=INDEX+1        
+    
+    done
+
+    exit
+}
+
+
+main(){
+clear
+
+echo "********************************************"
+echo "********************************************"
+echo "********************************************"
+echo "******                                ******"
+echo "******          rdvdp 0.1             ******"
+echo "******                                ******"
+echo "******        It's Automatic!         ******"
+echo "******                                ******"
+echo "******Will automagically rip a dvd and******"
+echo "******  name it after the dvd title.  ******"
+echo "******                                ******"
+echo "******                                ******"
+echo "******   Use dvdbackup to dump dvd    ******"
+echo "******   and handbrake                ******"
+echo "******                                ******"
+echo "******                                ******"
+echo "********************************************"
+echo "********************************************"
+echo "**************************************whukes"
+echo " "
+}
+
+#MAIN
+
+main
+
+printf "Multi-Disc Mode [dvdbackup] [y]: "
+read MDMD
+printf "Multi-Disc Mode [handbrake] [y]: "
+read MDMH
+printf "Single [dvdbackup] [y]: "
+read SDVD
+printf "Single [handbrake]: "
+read SHND
+
+if [ -n "$MDMD" ]; then
+    if [ $MDMD = "y" ]; then
+        echo " "
+        printf "Enter the numbers of discs: "
+        read DISC
+        multid
+    fi
+fi
+
+if [ -n "$MDMH" ]; then
+    if [ $MDMH = "y" ]; then
+        echo " "
+        printf "Enter the numbers of discs: "
+        read DISC
+        multih
+    fi
+fi
+
+if [ -n "$SDVD" ]; then
+    if [ $SDVD = "y" ]; then
+        singled
+    fi
+fi
+
+singleh

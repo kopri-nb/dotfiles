@@ -1,0 +1,10 @@
+#!/bin/zsh
+
+if [ -n "$1" ]; then
+    cd "$1"
+fi
+
+#force standard sorting order
+LANG=C
+
+find -type f -print0 | xargs -0 md5sum | sort -k2

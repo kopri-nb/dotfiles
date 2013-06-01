@@ -1,0 +1,18 @@
+#!/bin/zsh
+
+SRCDIR=$HOME/src
+
+cd $SRCDIR
+REPODIRS=( */ );
+
+echo ":: Starting source update..."
+for DIR in ${REPODIRS[@]}; do
+	if [ -d $SRCDIR/$DIR/.git ]; then
+		echo ">  $(echo Updating $DIR| sed s'/\///')"
+		cd $SRCDIR/$DIR; git pull
+	elif [ -d $SRCDIR/$DIR/.svn ]; then
+		echo ">  $(echo Updating $DIR| sed s'/\///')"
+		cd $SRCDIR/$DIR; svn up
+	fi
+done
+exit

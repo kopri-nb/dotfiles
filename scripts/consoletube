@@ -1,0 +1,92 @@
+#!/bin/zsh
+
+###############################################################################
+#
+# Consoletube, a command-line YouTube client that uses VLC as its backend.    
+#  
+# Dependencies : Lynx, **Latest** version of VLC
+#
+# Usage : consoletube [-c|-n] [Search query]
+#         consoletube [-p] [Youtube playlist URL]
+#
+# Run `consoletube -h` for help
+#
+# http://bogh.us/code/consoletube/
+#
+###############################################################################
+
+
+# Define the VLC binary to use by default
+vlcbin=$(which vlc)
+
+# Function to collect YouTube video URLs and pipe them to VLC
+# Will execute this at the end of script
+function ytProcess {
+    lynx -dump "$ytURL" | \
+        sed -n '/^References$/,$p' | \
+        grep -E '[[:digit:]]+\.' | \
+        awk '{print $2}' | \
+        grep "watch?" | \
+        grep -E -v "&feature=(results|fvs[tr]|plpp(_play_all|&context))" | \
+        uniq | \
+        tr '\n' ' ' | \
+        xargs ${vlcbin}
+
+    exit 0
+}
+
+# Various command-line options
+if [ $# -ge 1 ] ; then
+  case "$1" in
+	# Use VLC's curses interface. Useful if you don't have X11 running.
+	# Doesn't display video and is kinda buggy.
+	-c) vlcbin="$(which nvlc) --nocolor --novideo"
+	    shift
+	    ;;
+	# Don't display video - saves CPU cycles
+	-n) vlcbin="$(which vlc) --novideo"
+       	    shift
+	    ;;
+    	# Use a premade YouTube playlist or user feed instead of keywords
+	-p) ytURL="$2"
+            ytProcess
+            ;;
+	# Use Youtube playlist, no video
+	-np|-pn) vlcbin="$(which vlc) --novideo"
+       	    ytURL="$2"
+            ytProcess
+   	    ;;
+	# Use Youtube playlist, Curses interface
+	-cp|-pc) vlcbin="$(which nvlc) --nocolor --novideo"
+            ytURL="$2"
+            ytProcess
+            ;;
+	# Display help message
+	-h|--help) echo "Usage: $0 [-c|-n] [Search query]"
+		   echo " -n		use default VLC interface, no video"
+		   echo " -c		use VLC's Curses interface [BUGGY!], no video"
+       		   echo " -p            Play a YouTube playlist or user feed instead of a search string"
+           	   echo " -pn           Play Youtube playlist, no video"
+           	   echo " -pc           Play Youtube playlist, Curses interface"
+		   echo " -h, --help	print this help message"  >&2; exit 1
+  esac
+fi
+
+# Input keywords. Prompt the user if no keywords provided in the command.
+if [ "$1" ]; then
+	keyWords="$*"
+else
+	echo "Enter keywords:"
+	read keyWords
+	if [ keyWords == "" ]; then
+		echo "Please enter keyword(s)"
+		exit 1
+	fi
+fi
+
+# Youtube URL to use. This URL will be used with the keywords
+# unless the '-p' (playlist) option was supplied
+ytURL="http://youtube.com/results?search_query=$keyWords"
+
+# Execute the function we made at the beginning
+ytProcess

@@ -1,0 +1,3 @@
+#!/bin/zsh
+
+loimpress --headless --convert-to pdf "$@"

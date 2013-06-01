@@ -1,0 +1,8 @@
+    pb 'pattern'
+
+Output will be a list of torrents matching the pattern, seeders sorted.
+
+    press n<enter> to go to the next page list
+    press b<enter> to go to the previous page list
+    press <enter> to exit from script
+    provide a number or a comma separated list of number to download

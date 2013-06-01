@@ -1,0 +1,66 @@
+#!/bin/zsh
+
+#  Shell script to scan files using VirusTotal service (https://www.virustotal.com)
+#
+#  Author       : saf1
+#  Home         : http://www.linuxac.org
+#  Date         : Mon Aug 20 2012
+#  Dependencies : md5sum, curl, And don't forget to be connected 
+
+help(){
+  echo -e "\nThis is a Shell-Script that help you to scan your files"
+  echo -e "using VirusTotal service (https://www.virustotal.com)\n"
+  echo -e "Usage : ./${0##*/} [OPTION] [File][Directory]"
+  echo -e "  Available Options:"
+  echo -e "           -f [file]        Scan file"
+  echo -e "           -d [directory]   Scan all the contents of the directory"
+  echo -e "           -h               Show this help\n"
+}
+
+scan(){
+  file="$1"
+  md5="$(md5sum "$file" | awk '{print $1}')"
+  url="https://www.virustotal.com/file/${md5}/analysis/"
+  result="$(curl -s --head --connect-timeout 3 --retry 1 $url | awk '/HTTP/ {print $2}')"
+
+  if [ "$result" == "200" ]; then
+    ratio="$(curl -s $url | grep '<td class=\" text-.*</td>' | cut -d'>' -f2 | cut -d'<' -f1)"
+    if [ "${ratio:0:1}" == "0" ];then
+      status="\033[1;32mClean\033[0m"
+    else
+      status="\033[1;31mInfected\033[0m"
+    fi
+    echo -e "\nFile             : $file"
+    echo -e "MD5              : $md5"
+    echo -e "Status           : $status"
+    echo -e "Detection ratio  : $ratio"
+    echo -e "Raport           : $url\n"
+  else
+    echo -e "\nFile             : $file"
+    echo -e "MD5              : $md5"
+    echo -e "Status           : \033[36mSuspected\033[0m\n"
+  fi
+}
+
+case "$1" in
+  -d)
+    if [ ! -d "$2" ]; then
+      echo -e "\n[!] cannot access $2: No such directory\n"
+      exit 1
+    else
+      export -f scan
+      find "$2" -type f -exec bash -c "scan \"{}\"" \;
+    fi
+  ;;
+  -f)
+    if [ ! -f "$2" ] ; then
+      echo -e "\n[!] cannot access $2: No such file\n"
+      exit 1
+    else
+      scan "$2"
+    fi
+  ;;
+  *)
+    help
+  ;;
+esac

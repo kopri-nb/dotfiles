@@ -1,0 +1,48 @@
+#!/bin/zsh
+
+### commbox ####################################################################
+# A simple script that makes it easy to generate a nicely formatted comment    #
+# box around text (that looks something like this :)                           #
+################################################################################
+
+# Check for the correct number of args
+if [ $# -eq 0 ]; then
+        echo "usage: ${0##*/} [title] [text]" 1>&2
+        exit 1
+fi
+
+# The number of columns to use for wrapping,
+#+ minus 4 so the comment box doesn't exceed
+#+ the specified width [default: 80]
+
+columns=76
+
+# The border to print
+border=''
+
+# Generate the border to be used along the
+#+ top and bottom of the text.
+for f in $(seq $((columns + 4))); do
+        border=${border}'#'
+done
+
+# Print the top border
+echo -n ${border}
+
+# If the user specified a title, print it
+if [ $# -gt 1 ]; then
+        echo -e "\r### $1 "
+        shift
+else
+        echo
+fi
+
+# Print the user's message
+while read line; do
+        printf "# %-${columns}s #\n" "$line"
+done < <(fold -w ${columns} -s << EOF
+$*
+EOF)
+
+# Print the bottom border
+echo ${border}
