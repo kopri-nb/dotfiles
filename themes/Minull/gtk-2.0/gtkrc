@@ -41,25 +41,25 @@ style "default"
   fg[ACTIVE]       	 = "#ffffff"
   fg[PRELIGHT]     	 = "#ffffff"
   fg[SELECTED]     	 = "#ffffff"
-  fg[INSENSITIVE]  	 = "#CC6666"
+  fg[INSENSITIVE]  	 = "#333333"
 
-  bg[NORMAL]       	 = "#333333" # Normal Background
-  bg[ACTIVE]       	 = "#333333"
+  bg[NORMAL]       	 = "#000000" # Normal Background
+  bg[ACTIVE]       	 = "#000000"
   bg[PRELIGHT]     	 = "#0a0a0a" # Expand prelight bg
   bg[SELECTED]     	 = "#0a0a0a"
   bg[INSENSITIVE]  	 = "#0a0a0a"
 
-  base[NORMAL]     	 = "#333333" # Background, most
-  base[ACTIVE]     	 = "#333333" # Menu active item in inactive window
+  base[NORMAL]     	 = "#000000" # Background, most
+  base[ACTIVE]     	 = "#0a0a0a" # Menu active item in inactive window
   base[PRELIGHT]   	 = "#545454"
   base[INSENSITIVE] = "#030303" # Inactive Entry bg
   base[SELECTED]     = "#0a0a0a" # Menu active item in active window
 
   text[NORMAL]	 = "#ffffff" # Text in window, arrows
-  text[INSENSITIVE]	 = "#CC6666" # Insensitive arrows
-  text[SELECTED]   	 = "#ffffff" # Active text in active window
-  text[ACTIVE]     	 = "#CC6666" # Active text in inactive window
-  text[PRELIGHT]   	 = "#CC6666" # Text on Mouseover
+  text[INSENSITIVE]	 = "#333333" # Insensitive arrows
+  text[SELECTED]   	 = "#545454" # Active text in active window
+  text[ACTIVE]     	 = "#545454" # Active text in inactive window
+  text[PRELIGHT]   	 = "#545454" # Text on Mouseover
 
 
 
@@ -1292,7 +1292,7 @@ widget_class "*Tool*GtkButton" style "toolbuttons"
 
 style "menubar" = "default"
 {
-  bg[NORMAL] = "#333333"
+  bg[NORMAL] = "#000000"
   fg[NORMAL] = "#ffffff"
   fg[PRELIGHT] = "#545454"
   text[PRELIGHT] = "#545454"
@@ -1540,7 +1540,7 @@ style "notebook"		= "default"
 
 style "tooltips"	= "default"
 {
-  bg[NORMAL]		= "#333333"
+  bg[NORMAL]		= "#000000"
 }
 
 ##################### RULER ##################
