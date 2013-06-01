@@ -7,4 +7,4 @@ I do not claim to have authored each file here, some where collected and I will 
 
 
 
-[![dotfiles](https://github.com/kopri-nb/dotfiles/blob/master/example.png)]
+[![dotfiles](https://raw.github.com/kopri-nb/dotfiles/master/example.png)]
