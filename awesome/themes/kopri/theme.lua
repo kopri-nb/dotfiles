@@ -30,16 +30,16 @@ if not awful.util.file_readable(themes .. themename .. "/theme.lua") then
 end
 themedir      = themes .. themename
 
-wallpaper1    = themedir .. "/background.png"
-wallpaper2    = themedir .. "/background.jpg"
+--wallpaper1    = themedir .. "/background.png"
+--wallpaper2    = themedir .. "/background.jpg"
 
 
-if awful.util.file_readable(wallpaper1) then
-	theme.wallpaper_cmd = { "awsetbg " .. wallpaper1 }
-elseif awful.util.file_readable(wallpaper2) then
-	theme.wallpaper_cmd = { "awsetbg " .. wallpaper2 }
+--if awful.util.file_readable(wallpaper1) then
+--	theme.wallpaper_cmd = { "awsetbg " .. wallpaper1 }
+--elseif awful.util.file_readable(wallpaper2) then
+--	theme.wallpaper_cmd = { "awsetbg " .. wallpaper2 }
 
-end
+--end
 
 if awful.util.file_readable(config .. "/vain/init.lua") then
     theme.useless_gap_width  = "5"

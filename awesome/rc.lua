@@ -64,7 +64,7 @@ vain.layout.browse.extra_padding = 5
 -- {{{ Tags
  -- Define a tag table which will hold all screen tags.
  tags = {
-   names = { "① main", "② term", "③ code", "④ www", "⑤ media" },
+   names = { "main", "term", "code", "www", "media" },
    layout = { layouts[1], layouts[1], layouts[6], layouts[8], layouts[1],
               }}
  for s = 1, screen.count() do
@@ -167,8 +167,8 @@ for s = 1, screen.count() do
     -- Create the wibox
     mywibox[s] = awful.wibox({ 
                  position = "top", screen = s, height = "14", 
-                 border_width = beautiful.border_width2,  
-                 border_color = beautiful.border_wibox 
+                -- border_width = beautiful.border_width2,  
+                -- border_color = beautiful.border_wibox 
     })
     
     
@@ -248,7 +248,7 @@ upgradewidget = widget({type = "textbox"})
 
 upgradewidget_t = awful.tooltip({ objects = { upgradewidget},})
 
-vicious.register(upgradewidget, vicious.widgets.pkg,'<span font="limey 9" color="#BF1E2D">Upgrades:$1</span>', 1801, "Debian")
+vicious.register(upgradewidget, vicious.widgets.pkg,'<span font="limey 9" color="#BF1E2D">$1</span>', 1801, "Debian")
 
 upgradeicon = widget({type = "imagebox" })
 upgradeicon.image = image(beautiful.debianicon)
@@ -274,6 +274,9 @@ arr1.image = image(beautiful.arr1)
 arr2 = widget ({type = "imagebox" })
 arr2.image = image(beautiful.arr2)
 
+loltext = widget({ type = "textbox" })
+loltext.text = "::"
+
 
 
 spr3f = widget({ type = "textbox" })
@@ -283,12 +286,41 @@ spr3f.text = '<span background="#313131" font="Terminus 12"> </span>'
 spacertag = widget({type = "imagebox"})
 spacertag.image = image(beautiful.spacertag)
 
+voltext = widget({type = "textbox"})
+voltext.text = " vol. "
+
+caltext = widget({type = "textbox"})
+caltext.text = " cal."
+
+upgradetext = widget({type = "textbox"}) 
+upgradetext.text = "apt. "
+
+nettext = widget({type = "textbox"})
+nettext.text = " net."
+
+hddtext = widget({type = "textbox"})
+hddtext.text = " hdd."
+
+cputext = widget({type = "textbox"})
+cputext.text = " cpu."
+
+sentext = widget({type = "textbox"})
+sentext.text = " sen."
+
+memtext = widget({type = "textbox"})
+memtext.text = " mem."
+
+
+
+
+
+
     -- Add widgets to the wibox - order matters
     mywibox[s].widgets = {
         {
             --mylauncher,
             --spacer2,
-            --spacertag,
+            spacertag,
             mytaglist[s],                        
             arr2,
             --arr1,
@@ -296,45 +328,64 @@ spacertag.image = image(beautiful.spacertag)
             mypromptbox[s],
             layout = awful.widget.layout.horizontal.leftright
         },
-        
-        mylayoutbox[s],
+         
         spacertag,
+        mylayoutbox[s], 
+        loltext,
         spacer6,
         --arr1,
         --arr2,
         volwidget,
-        volicon,        
-        arr1,
+        voltext,
+       -- volicon,
+        
+        loltext,
+       -- arr1,
         --arr2,        
         timewidget,
-        clockicon,
-        arr1,
+        caltext,
+       -- clockicon,
+         loltext,
+       -- arr1,
         --arr2,
         spacer6,
         upgradewidget,
-        spacer6,
-        upgradeicon,
+        upgradetext,
         spacer2,
-        arr1,
+       -- upgradeicon,
+        spacer2,
+        loltext,
+       -- arr1,
         --arr2,
         netwidget,
-        neticon,
-        arr1,
+        nettext,
+       -- neticon,
+         loltext,
+       -- arr1,
         --arr2,        
         fswidget,
-        udisks_glue.widget,
-        arr1,        
+        hddtext,
+        loltext,
+       -- udisks_glue.widget,
+       -- arr1,        
         --arr2,
         cpuwidget,
-        cpuicon,
-        arr1,
+        cputext,
+        loltext,
+       -- cpuicon,
+       -- arr1,
         --arr2,
         sensors,
-        tempicon,
-        arr1,
+        sentext,
+        loltext,
+       -- tempicon,
+       -- arr1,
         --arr2,
         memwidget,
-        memicon,
+        memtext,
+        loltext,
+       -- memicon,
+        spacer6,
         arr1,        
         --arr2,
         spacer6,
