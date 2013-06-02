@@ -13,9 +13,9 @@ export GNOME_KEYRING_PID
 
 ogg123 -q "/home/kopri/bin/mgs-sounds/konami_sequence.ogg" &
 
-urxvtd -q -o -f 
+/usr/bin/urxvtd -q -o -f
 
-feh --bg-fill ~/images/minimal/simpledesktops.com.png
+feh --bg-tile /home/kopri/images/pattern/dark_mosaic.png
 
 unclutter -idle 10 -jitter 5 &
 
@@ -23,9 +23,10 @@ mpd &
 
 xscreensaver -no-splash &
 
-bar -p &
+#bar -p &
 
-urxvtc &
+#urxvtc &
 
-2bwm
+#2bwm
 
+exec awesome
