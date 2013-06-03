@@ -49,7 +49,7 @@ end
 theme.font          = "limey 9"
 
 theme.bg_normal     = "#151515"
-theme.bg_focus      = "#BF1E2D"
+theme.bg_focus      = "#9DBA3A"
 theme.bg_urgent     = "#DDDAC6"
 theme.bg_minimize   = "#333333"
 
@@ -61,7 +61,7 @@ theme.fg_minimize   = "#F7F7FF"
 theme.border_width  = "4"
 theme.border_width2 = "1"
 theme.border_normal = "#333333" 
-theme.border_focus  = "#BF1E2D"
+theme.border_focus  = "#9DBA3A"
 theme.border_marked = "#CC6666"
 theme.border_wibox  = "#EBEBEB"
 

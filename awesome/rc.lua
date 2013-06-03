@@ -181,7 +181,7 @@ mytextclock = awful.widget.textclock({ align = "right" }, "%b %d, %I:%M:%S", 1)
 -- Initialize widget
 timewidget = widget({ type = "textbox" })
 -- Register widget
-vicious.register(timewidget, vicious.widgets.date, '<span foreground="#BF1E2D" background="#151515"></span><span foreground="#BF1E2D" font="limey 9"> %b %d, %I:%M:%S </span>')
+vicious.register(timewidget, vicious.widgets.date, '<span foreground="#435d75" background="#151515"></span><span foreground="#435d75" font="limey 9"> %b %d, %I:%M:%S </span>')
 timewidget.bg = "#151515"
 clockicon = widget({type = "imagebox"})
 clockicon.image = image(beautiful.clockicon)
@@ -191,7 +191,7 @@ clockicon.image = image(beautiful.clockicon)
 netwidget = widget({ type = "textbox" })
 vicious.register(netwidget, 
 vicious.widgets.net,
-'<span background="#151515" font="Terminus 12"> <span font="limey 9" color="#BF1E2D">${eth0 down_kb} ↓↑ ${eth0 up_kb}</span> </span>', 3)
+'<span background="#151515" font="Terminus 12"> <span font="limey 9" color="#B7416E">${eth0 down_kb} ↓↑ ${eth0 up_kb}</span> </span>', 3)
 neticon = widget ({type = "imagebox" })
 neticon.image = image(beautiful.widget_net)
 netwidget:buttons(awful.util.table.join(awful.button({ }, 1,
@@ -202,7 +202,7 @@ function () awful.util.spawn_with_shell(iptraf) end)))
 
 fswidget = widget({ type = "textbox" })
 vicious.register(fswidget, vicious.widgets.fs,
-'<span background="#151515" font="Terminus 12"> <span font="limey 9" color="#BF1E2D">${/media/Data avail_gb} GB </span></span>', 8)
+'<span background="#151515" font="Terminus 12"> <span font="limey 9" color="#d0d26b">${/media/Data avail_gb} GB </span></span>', 8)
 udisks_glue = blingbling.udisks_glue.new(beautiful.widget_hdd)
 udisks_glue:set_mount_icon(beautiful.accept)
 udisks_glue:set_umount_icon(beautiful.cancel)
@@ -214,15 +214,15 @@ udisks_glue.widget.resize = true
 
 fshwidget = widget({ type = "textbox" })
 vicious.register(fshwidget, vicious.widgets.fs,
-'<span background="#151515" font="Terminus 12"> <span font="limey 9" color="#BF1E2D">/home ${/home avail_gb} GB </span></span>', 8)
+'<span background="#151515" font="Terminus 12"> <span font="limey 9" color="#d0d26b">/home ${/home avail_gb} GB </span></span>', 8)
 
 cpuwidget = widget({ type = "textbox" })
 vicious.register(cpuwidget, vicious.widgets.cpu,
-'<span background="#151515" font="Terminus 12"> <span font="limey 9" color="#BF1E2D">$2% <span color="#BF1E2D">·</span> $3% </span></span>', 3)
+'<span background="#151515" font="Terminus 12"> <span font="limey 9" color="#6d9cbe">$2% <span color="#BF1E2D">·</span> $3% </span></span>', 3)
 cpuicon = widget ({type = "imagebox" })
 cpuicon.image = image(beautiful.widget_cpu)
 sensors = widget({ type = "textbox" })
-vicious.register(sensors, vicious.widgets.sensors, '<span foreground="#BF1E2D" background="#151515"></span>')
+vicious.register(sensors, vicious.widgets.sensors, '<span foreground="#9DBA3A" background="#151515"></span>')
 tempicon = widget ({type = "imagebox" })
 tempicon.image = image(beautiful.widget_temp)
 --blingbling.popups.htop(cpuwidget,
@@ -240,7 +240,7 @@ oswidget = widget ({ type = "textbox"})
 vicious.register(oswidget, vicious.widgets.os,'<span font="limey 9" color="#313131">$2</span>')
 
 volwidget = widget({ type = "textbox", align = "right" })
-vicious.register(volwidget, vicious.widgets.volume, '<span font="limey 9" color="#BF1E2D">$1</span>', 1, "Master")
+vicious.register(volwidget, vicious.widgets.volume, '<span font="limey 9" color="#E7212A">$1</span>', 1, "Master")
 volicon = widget ({type = "imagebox" })
 volicon.image = image(beautiful.volicon)
 
@@ -348,13 +348,13 @@ memtext.text = " mem."
          loltext,
        -- arr1,
         --arr2,
-        spacer6,
-        upgradewidget,
-        upgradetext,
-        spacer2,
+       -- spacer6,
+       -- upgradewidget,
+       -- upgradetext,
+       -- spacer2,
        -- upgradeicon,
-        spacer2,
-        loltext,
+       -- spacer2,
+        --loltext,
        -- arr1,
         --arr2,
         netwidget,
@@ -437,6 +437,13 @@ globalkeys = awful.util.table.join(
                 client.focus:raise()
             end
         end),
+
+    awful.key({ modkey            }, "m",  function ()
+        awful.util.spawn("dmenu_run -i -b -p 'run teh:' -nb '" ..
+                   beautiful.bg_normal .. "' -nf '" .. beautiful.fg_normal ..
+                   "' -sb '" .. beautiful.bg_focus ..
+                   "' -sf '" .. beautiful.fg_focus .. "'") 
+               end),       
 
     -- Standard program
     awful.key({ modkey,           }, "Return", function () awful.util.spawn(terminal) end),
@@ -582,6 +589,11 @@ client.add_signal("manage", function (c, startup)
         end
     end
 end)
+
+local oldspawn = awful.util.spawn
+awful.util.spawn = function (s)
+  oldspawn(s, false)
+end 
 
 client.add_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.add_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
