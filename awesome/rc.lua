@@ -319,12 +319,11 @@ memtext.text = " mem."
     mywibox[s].widgets = {
         {
             --mylauncher,
-            --spacer2,
             spacertag,
-            mytaglist[s],                        
-            arr2,
-            --arr1,
-            spacer6,            
+            mytaglist[s],
+            spacer2,
+            loltext,
+            spacer6,
             mypromptbox[s],
             layout = awful.widget.layout.horizontal.leftright
         },
@@ -332,62 +331,29 @@ memtext.text = " mem."
         spacertag,
         mylayoutbox[s], 
         loltext,
-        spacer6,
-        --arr1,
-        --arr2,
+        spacer6,             
         volwidget,
-        voltext,
-       -- volicon,
-        
-        loltext,
-       -- arr1,
-        --arr2,        
+        voltext, 
+        loltext,        
         timewidget,
         caltext,
-       -- clockicon,
-         loltext,
-       -- arr1,
-        --arr2,
-       -- spacer6,
-       -- upgradewidget,
-       -- upgradetext,
-       -- spacer2,
-       -- upgradeicon,
-       -- spacer2,
-        --loltext,
-       -- arr1,
-        --arr2,
+        loltext,
         netwidget,
         nettext,
-       -- neticon,
-         loltext,
-       -- arr1,
-        --arr2,        
+        loltext,        
         fswidget,
         hddtext,
         loltext,
-       -- udisks_glue.widget,
-       -- arr1,        
-        --arr2,
         cpuwidget,
         cputext,
         loltext,
-       -- cpuicon,
-       -- arr1,
-        --arr2,
         sensors,
         sentext,
         loltext,
-       -- tempicon,
-       -- arr1,
-        --arr2,
         memwidget,
         memtext,
         loltext,
-       -- memicon,
         spacer6,
-        arr1,        
-        --arr2,
         spacer6,
 
 
@@ -437,17 +403,32 @@ globalkeys = awful.util.table.join(
                 client.focus:raise()
             end
         end),
-
-    awful.key({ modkey            }, "m",  function ()
+     
+    -- Replaced default awesome promt with dmenu_run that matches beautiful theme     
+    awful.key({ modkey            }, "r",  function ()
         awful.util.spawn("dmenu_run -i -b -p 'run teh:' -nb '" ..
                    beautiful.bg_normal .. "' -nf '" .. beautiful.fg_normal ..
                    "' -sb '" .. beautiful.bg_focus ..
                    "' -sf '" .. beautiful.fg_focus .. "'") 
                end),       
+   
+   -- Toggle wibox/bar visibility            
+   awful.key({ modkey             }, "b",  function ()
+       mywibox[mouse.screen].visible = not mywibox[mouse.screen].visible
+   end),
 
+   -- Scrot printscreen
+   awful.key({ modkey              }, "Print", function ()
+       awful.util.spawn("scrot -q 100 -e 'mv $f /home/kopri/images/screenshots/ 2>/dev/null'")  
+   end),
+
+   -- Launch xcalc 
+   
+
+               
     -- Standard program
     awful.key({ modkey,           }, "Return", function () awful.util.spawn(terminal) end),
-    awful.key({ modkey, "Control" }, "r", awesome.restart),
+    awful.key({ modkey, "Shift"   }, "r", awesome.restart),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit),
 
     awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)    end),
@@ -462,7 +443,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Control" }, "n", awful.client.restore),
 
     -- Prompt
-    awful.key({ modkey },            "r",     function () mypromptbox[mouse.screen]:run() end),
+    awful.key({ modkey },            "m",     function () mypromptbox[mouse.screen]:run() end),
 
     awful.key({ modkey }, "x",
               function ()
@@ -590,6 +571,7 @@ client.add_signal("manage", function (c, startup)
     end
 end)
 
+-- Remove annoying spinning cursor when spawning programs from awesome menu/promt 
 local oldspawn = awful.util.spawn
 awful.util.spawn = function (s)
   oldspawn(s, false)
