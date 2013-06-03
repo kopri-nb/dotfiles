@@ -18,7 +18,7 @@ beautiful.init("/home/kopri/.config/awesome/themes/kopri/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal    = "urxvtc"
-editor      = os.getenv("EDITOR") or "nano"
+editor      = os.getenv("EDITOR") or "vim"
 editor_cmd  = terminal .. " -e " .. editor
 web         = "iceweasel"
 spacefm     = "spacefm"
@@ -174,15 +174,13 @@ for s = 1, screen.count() do
     
 -- {{{ Wibox
 -- widgets panel
---mytextclock = awful.widget.textclock({ align = "right"}, "%I:%M %p")
+
 mytextclock = awful.widget.textclock({ align = "right" }, "%b %d, %I:%M:%S", 1)
 
-
--- Initialize widget
 timewidget = widget({ type = "textbox" })
--- Register widget
 vicious.register(timewidget, vicious.widgets.date, '<span foreground="#435d75" background="#151515"></span><span foreground="#435d75" font="limey 9"> %b %d, %I:%M:%S </span>')
 timewidget.bg = "#151515"
+
 clockicon = widget({type = "imagebox"})
 clockicon.image = image(beautiful.clockicon)
 
@@ -192,6 +190,7 @@ netwidget = widget({ type = "textbox" })
 vicious.register(netwidget, 
 vicious.widgets.net,
 '<span background="#151515" font="Terminus 12"> <span font="limey 9" color="#B7416E">${eth0 down_kb} ↓↑ ${eth0 up_kb}</span> </span>', 3)
+
 neticon = widget ({type = "imagebox" })
 neticon.image = image(beautiful.widget_net)
 netwidget:buttons(awful.util.table.join(awful.button({ }, 1,
@@ -203,6 +202,7 @@ function () awful.util.spawn_with_shell(iptraf) end)))
 fswidget = widget({ type = "textbox" })
 vicious.register(fswidget, vicious.widgets.fs,
 '<span background="#151515" font="Terminus 12"> <span font="limey 9" color="#d0d26b">${/media/Data avail_gb} GB </span></span>', 8)
+
 udisks_glue = blingbling.udisks_glue.new(beautiful.widget_hdd)
 udisks_glue:set_mount_icon(beautiful.accept)
 udisks_glue:set_umount_icon(beautiful.cancel)
@@ -219,12 +219,16 @@ vicious.register(fshwidget, vicious.widgets.fs,
 cpuwidget = widget({ type = "textbox" })
 vicious.register(cpuwidget, vicious.widgets.cpu,
 '<span background="#151515" font="Terminus 12"> <span font="limey 9" color="#6d9cbe">$2% <span color="#BF1E2D">·</span> $3% </span></span>', 3)
+
 cpuicon = widget ({type = "imagebox" })
 cpuicon.image = image(beautiful.widget_cpu)
+
 sensors = widget({ type = "textbox" })
 vicious.register(sensors, vicious.widgets.sensors, '<span foreground="#9DBA3A" background="#151515"></span>')
+
 tempicon = widget ({type = "imagebox" })
 tempicon.image = image(beautiful.widget_temp)
+
 --blingbling.popups.htop(cpuwidget,
 --{ title_color = beautiful.notify_font_color_1, 
 --user_color = beautiful.notify_font_color_2, 
@@ -241,13 +245,12 @@ vicious.register(oswidget, vicious.widgets.os,'<span font="limey 9" color="#3131
 
 volwidget = widget({ type = "textbox", align = "right" })
 vicious.register(volwidget, vicious.widgets.volume, '<span font="limey 9" color="#E7212A">$1</span>', 1, "Master")
+
 volicon = widget ({type = "imagebox" })
 volicon.image = image(beautiful.volicon)
 
 upgradewidget = widget({type = "textbox"})
-
 upgradewidget_t = awful.tooltip({ objects = { upgradewidget},})
-
 vicious.register(upgradewidget, vicious.widgets.pkg,'<span font="limey 9" color="#BF1E2D">$1</span>', 1801, "Debian")
 
 upgradeicon = widget({type = "imagebox" })
@@ -269,19 +272,8 @@ spacer6.width = 6
 fsicon = widget ({type = "imagebox" })
 fsicon.image = image(beautiful.widget_hdd)
 
-arr1 = widget ({type = "imagebox" })
-arr1.image = image(beautiful.arr1)
-arr2 = widget ({type = "imagebox" })
-arr2.image = image(beautiful.arr2)
-
 loltext = widget({ type = "textbox" })
 loltext.text = "::"
-
-
-
-spr3f = widget({ type = "textbox" })
-spr3f.text = '<span background="#313131" font="Terminus 12"> </span>'
-
 
 spacertag = widget({type = "imagebox"})
 spacertag.image = image(beautiful.spacertag)
