@@ -3,31 +3,20 @@
 ##      .zshrc         ##
 ######################### 
 
-# Path to your oh-my-zsh configuration. dieter dpoggi geoffgarside maran obraun tjkirch
 ZSH=$HOME/.oh-my-zsh
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
 ZSH_THEME="dpoggi"
 
-
-# Editor
 EDITOR=vim
 
 VIEW=w3m
 
-
-#duellj or rkj
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
 alias ethtool='ethtool eth0'
 alias tcpdump='sudo tcpdump -i eth0'
 alias installfont='sudo fc-cache -f -v'
 alias diff='colordiff'
 alias c='clear'
+alias cp='cp -Rv'
 alias pstree++='~/scripts/pstree_color -pl'
 alias serve='python -m SimpleHTTPServer 8080'
 alias backup='cp filename{,.bak}'
@@ -59,14 +48,12 @@ alias internalip='print ${${$(LC_ALL=C /sbin/ifconfig eth0)[7]}:gs/addr://}'
 alias freespace='clear;echo "Drive      Size  Used  Avail Use  Mounted on";df -h|grep sd|column -t|sort && df -h --total|cut -c 1-11,17-37|tail -n1'
 alias magnet-to-torrent='aria2c -q --bt-metadata-only --bt-save-metadata'
 alias biggest='find -type f -printf '\''%s %p\n'\'' | sort -nr | head -n 40 | gawk "{ print \$1/1000000 \" \" \$2 \" \" \$3 \" \" \$4 \" \" \$5 \" \" \$6 \" \" \$7 \" \" \$8 \" \" \$9 }"'
+
 #suffix alias
 alias -s txt=nano
 alias -s jpg=feh
 alias -s png=feh
-
 alias tardir='( ( D=`builtin pwd`; F=$(date +$HOME/`sed "s,[/ ],#,g" <<< ${D/${HOME}/}`#-%F.tgz); S=$SECONDS; tar --ignore-failed-read --transform "s,^${D%/*},`date +${D%/*}.%F`,S" -czPf "$"F "$D" && logger -s "Tarred $D to $F in $(($SECONDS-$S)) seconds" ) & )'
-
-
 
 ## Get your external IP.
 [ -n "$(command -v curl)" ] && alias externalip='curl ifconfig.me'
@@ -74,43 +61,32 @@ alias tardir='( ( D=`builtin pwd`; F=$(date +$HOME/`sed "s,[/ ],#,g" <<< ${D/${H
 ## Network discovery.
 [ -n "$(command -v nmap)" ] && alias network-discover='nmap -sP "192.168.1.*"'
 
-
 # Set to this to use case-sensitive completion
 CASE_SENSITIVE="true"
 
 # Comment this out to disable bi-weekly auto-update checks
 # DISABLE_AUTO_UPDATE="true"
 
-# Uncomment to change how many often would you like to wait before auto-updates occur? (in days)
-# export UPDATE_ZSH_DAYS=13
+export UPDATE_ZSH_DAYS=14
 
-# Uncomment following line if you want to disable colors in ls
 # DISABLE_LS_COLORS="true"
 
-# Uncomment following line if you want to disable autosetting terminal title.
 # DISABLE_AUTO_TITLE="true"
 
-# Uncomment following line if you want red dots to be displayed while waiting for completion
 COMPLETION_WAITING_DOTS="true"
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
+# ZSH plugins
 plugins=(git debian cp history nyan)
 
 source $ZSH/oh-my-zsh.sh
 
+# Alt+x to insert sudo
 insert_sudo () { zle beginning-of-line; zle -U "sudo " }
 zle -N insert-sudo insert_sudo
 bindkey "^[x" insert-sudo
 
 bindkey '\e[1~' beginning-of-line
 bindkey '\e[4~' end-of-line
-
-
-autoload -U tetris
-zle -N tetris
-bindkey ^T tetris
 
 #Colored ManPages
 export LESS_TERMCAP_mb=$'\E[01;31m'
@@ -145,7 +121,6 @@ setopt HIST_SAVE_NO_DUPS
 setopt HIST_EXPIRE_DUPS_FIRST
 setopt HIST_FIND_NO_DUPS
 
-
 ### If you want zsh's completion to pick up new commands in $path automatically
 ### comment out the next line and un-comment the following 5 lines
 # zstyle ':completion:::::' completer _complete _approximate
@@ -164,15 +139,17 @@ zstyle ':completion:*:manuals.(^1*)' insert-sections true
 zstyle ':completion:*' menu select
 zstyle ':completion:*' verbose yes
 
+# Color command correction promt
 autoload -U colors && colors
-export SPROMPT="$fg[cyan]Correct $fg[red]%R$reset_color $fg[magenta]to $fg[green]%r?$reset_color ($fg[blue]Yes, No, Abort, Edit$fg[white])"
+export SPROMPT="$fg[cyan]Correct $fg[red]%R$reset_color $fg[magenta]to $fg[green]%r?$reset_color ($fg[white]YES :: NO :: ABORT :: EDIT$fg[white])"
 
-# Customize to your needs...
 export PATH=/home/kopri/scripts:/home/kopri/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
 
+# Syntax Highlighting 
 source /home/kopri/.oh-my-zsh/custom/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /home/kopri/.oh-my-zsh/custom/zsh-syntax-highlighting-filetypes/zsh-syntax-highlighting-filetypes.zsh
 
+# Apply Xresources colors to the TTY
 if [ "$TERM" = "linux" ]; then
     _SEDCMD='s/.*\*color\([0-9]\{1,\}\).*#\([0-9a-fA-F]\{6\}\).*/\1 \2/p'
     for i in $(sed -n "$_SEDCMD" $HOME/.Xresources | \
@@ -182,6 +159,4 @@ if [ "$TERM" = "linux" ]; then
     clear
 fi
 
-#run screenfetch at start
-screenfetch -D debian
-
+date | figlet -c
