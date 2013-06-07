@@ -90,8 +90,8 @@ def download (self):
             urlC = url.read()
             url.close()
             jpg = jpg_location_re.search(urlC)
-             print jpg.group(1)
-                        exten = os.path.splitext(jpg.group(1))[1]
+            print jpg.group(1)
+            exten = os.path.splitext(jpg.group(1))[1]
             title = 'XKCD' + xkcdStr + exten
             cDir = os.getcwd()
             DLLoc = cDir + '/xkcd/' + title
