@@ -1,12 +1,11 @@
 !!--!!--!!--!!--!!--!!
-!!      kopri's     !!
+!!      kopris      !!
 !!    .Xresources   !!
 !!                  !! 
 !!--!!--!!--!!--!!--!!
 
 
-
-! font settings --------------------------------------------------------------
+! Dat Xft settings --------------------------------------------------------------
 
 Xft.autohint: true
 Xft.antialias: true
@@ -16,82 +15,78 @@ Xft.hintstyle: hintslight
 Xft.rgba: rgb
 Xft.lcdfilter: lcddefault
 
+! Urxvt configuration
 
-! urxvt config
-
-*foreground: #ebebeb
+*foreground: #EBEBEB
 *background: #151515
 
-!black
-*color0: #393939
-*color8: #474747
+!BLACK
+*color0:     #393939
+*color8:     #474747
 
-!red
+!RED
 *color1:     #BF1E2D
 *color9:     #E7212A
 
-!green
+!GREEN
 *color2:     #9DBA3A
 *color10:    #A9C938
 
-!yellow
-*color3:  #d0d26b
-*color11: #c8bc45
+!YELLOW
+*color3:     #D0D26B
+*color11:    #C8BC45
 
-!blue
-*color4: #6d9cbe
-*color12: #d0d0ff
+!BLUE
+*color4:     #6D9CBE
+*color12:    #D0D0FF
 
-!magenta
-*color5: #B7416E
-*color13: #E16A98
+!MAGENTA
+*color5:     #B7416E
+*color13:    #E16A98
 
-!cyan
-*color6: #435d75
-*color14: #6e98a4
+!CYAN
+*color6:     #435D75
+*color14:    #6E98A4
 
-!white
-*color7: #ebebeb
-*color15: #cccccc
+!WHITE
+*color7:     #EBEBEB
+*color15:    #CCCCCC
 
-
-
-! fonts
-urxvt*font: 			xft:uushi:pixelsize=9:antialias=true:hinting=true
-URxvt*boldFont:         xft:uushi:pixelsize=9:antialias=true:hinting=true
+! Dat font
+urxvt*font: 			       xft:uushi:pixelsize=9:antialias=true:hinting=true
+URxvt*boldFont:          xft:uushi:pixelsize=9:antialias=true:hinting=true
 
 ! settings
-urxvt*title: 			urxvt
-urxvt*termName: 		rxvt-256color
-urxvt*iconName:			rxvt-256color
-URxvt*scrollBar: False
-URxvt*scrollTtyOutput: False
+URxvt*title: 			       urxvt
+URxvt*termName: 		     rxvt-256color
+URxvt*iconName:			     rxvt-256color
+URxvt*scrollBar:         False
+URxvt*scrollTtyOutput:   False
 URxvt*scrollTtyKeypress: True
-URxvt*secondaryScroll: True
-URxvt*saveLines: 8000
-urxvt*geometry:         80x20
-URxvt.iconFile: /home/kopri/.icons/terminal.svg
-URxvt.internalBorder:    0
-URxvt.borderColor:       #CC6666
-URxvt*cursorBlink:       true
-urxvt*cursorColor:       #999999
-urxvt*colorBD:           #FFFFFF
-urxvt*colorUL:           #CCCCFF
-URxvt*mapAlert:          true
-URxvt*urgentOnBell:      true
-
+URxvt*secondaryScroll:   True
+URxvt*saveLines:         8000
+URxvt*geometry:          80x20
+URxvt.internalBorder:    1 
+URxvt.borderColor:       #EBEBEB
+URxvt*cursorBlink:       True
+URxvt*cursorColor:       #999999
+URxvt*colorBD:           #FFFFFF
+URxvt*colorUL:           #9DBA3A
+URxvt*mapAlert:          True
+URxvt*urgentOnBell:      True
+URxvt.print-pipe:        cat > $(TMPDIR=$HOME mktemp urxvt.XXXXXX)
+URxvt*cursorUnderline:   True
 
 
 !Perl extensions
-URxvt.perl-ext-common : default,matcher,clipboard
+URxvt.perl-ext-common :  default,matcher,clipboard
 
 !Link launching
-URxvt.urlLauncher     : luakit
-URxvt.matcher.button  : 1
-URxvt*matcher.pattern.1:  \\bwww\\.[\\w-]+\\.[\\w./?&@#-]*[\\w/-]
-URxvt*visualBell:	        true
-URxvt*keysym.C-u:         perl:matcher
-
+URxvt.urlLauncher     :  firefox
+URxvt.matcher.button  :  1
+URxvt*matcher.pattern.1: \\bwww\\.[\\w-]+\\.[\\w./?&@#-]*[\\w/-]
+URxvt*visualBell:	       true
+URxvt*keysym.C-u:        perl:matcher
 
 !tabs
 URxvt.tabbed.tabbar-fg: 5
@@ -104,6 +99,10 @@ URxvt.keysym.M-c:   perl:clipboard:copy
 URxvt.keysym.M-v:   perl:clipboard:paste
 URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
 
+! Xorg Settings
+Xcursor.theme: Neutral_Plus
+!Xcursor.theme: Vanilla-DMZ-AA
+Xcursor.size: 48
 
 
 ! xscreensaver ---------------------------------------------------------------
