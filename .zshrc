@@ -4,12 +4,16 @@
 ######################### 
 
 ZSH=$HOME/.oh-my-zsh
-
 ZSH_THEME="dpoggi"
+
+#Make sure to use UTF-8
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+export LANGUAGE=en_US.UTF-8
 
 EDITOR=vim
 
-VIEW=w3m
+VIEW=lynx
 
 alias ethtool='ethtool eth0'
 alias tcpdump='sudo tcpdump -i eth0'
@@ -22,11 +26,6 @@ alias serve='python -m SimpleHTTPServer 8080'
 alias backup='cp filename{,.bak}'
 alias weather='ctw --nometric USAZ0233'
 alias nocomment='egrep -v "^\s*(#|$)"'
-alias screenfetch='screenfetch -D debian'
-alias upgrade='sudo apt-get upgrade'
-alias install='sudo apt-get install'
-alias aptclean='sudo apt-get clean'
-alias screenf='screenfetch -D debian'
 alias god='sudo'
 alias smite='rm -rf'
 alias ls='ls --color=auto'
@@ -40,20 +39,18 @@ alias ....='cd ../../..'
 alias .....='cd ../../../..'
 alias ......='cd ../../../../..'
 alias .......='cd ../../../../../..'
-alias reboot='sudo /sbin/reboot'
-alias shutdown='sudo /sbin/shutdown'
 alias dirsize='du -h --max-depth=1 "$@" | sort -k 1,1hr -k 2,2f'
 alias creationdate='stat -F '%D' +mtime'
 alias internalip='print ${${$(LC_ALL=C /sbin/ifconfig eth0)[7]}:gs/addr://}'
 alias freespace='clear;echo "Drive      Size  Used  Avail Use  Mounted on";df -h|grep sd|column -t|sort && df -h --total|cut -c 1-11,17-37|tail -n1'
 alias magnet-to-torrent='aria2c -q --bt-metadata-only --bt-save-metadata'
 alias biggest='find -type f -printf '\''%s %p\n'\'' | sort -nr | head -n 40 | gawk "{ print \$1/1000000 \" \" \$2 \" \" \$3 \" \" \$4 \" \" \$5 \" \" \$6 \" \" \$7 \" \" \$8 \" \" \$9 }"'
+alias tardir='( ( D=`builtin pwd`; F=$(date +$HOME/`sed "s,[/ ],#,g" <<< ${D/${HOME}/}`#-%F.tgz); S=$SECONDS; tar --ignore-failed-read --transform "s,^${D%/*},`date +${D%/*}.%F`,S" -czPf "$"F "$D" && logger -s "Tarred $D to $F in $(($SECONDS-$S)) seconds" ) & )'
 
 #suffix alias
-alias -s txt=nano
+alias -s txt=vim
 alias -s jpg=feh
 alias -s png=feh
-alias tardir='( ( D=`builtin pwd`; F=$(date +$HOME/`sed "s,[/ ],#,g" <<< ${D/${HOME}/}`#-%F.tgz); S=$SECONDS; tar --ignore-failed-read --transform "s,^${D%/*},`date +${D%/*}.%F`,S" -czPf "$"F "$D" && logger -s "Tarred $D to $F in $(($SECONDS-$S)) seconds" ) & )'
 
 ## Get your external IP.
 [ -n "$(command -v curl)" ] && alias externalip='curl ifconfig.me'
@@ -61,22 +58,15 @@ alias tardir='( ( D=`builtin pwd`; F=$(date +$HOME/`sed "s,[/ ],#,g" <<< ${D/${H
 ## Network discovery.
 [ -n "$(command -v nmap)" ] && alias network-discover='nmap -sP "192.168.1.*"'
 
-# Set to this to use case-sensitive completion
 CASE_SENSITIVE="true"
-
-# Comment this out to disable bi-weekly auto-update checks
-# DISABLE_AUTO_UPDATE="true"
 
 export UPDATE_ZSH_DAYS=14
 
-# DISABLE_LS_COLORS="true"
-
-# DISABLE_AUTO_TITLE="true"
-
+# Show dem dots when waiting for compinit
 COMPLETION_WAITING_DOTS="true"
 
-# ZSH plugins
-plugins=(git debian cp history nyan)
+# ZSH pluginz
+plugins=(cp history nyan colored-man colorize)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -88,15 +78,16 @@ bindkey "^[x" insert-sudo
 bindkey '\e[1~' beginning-of-line
 bindkey '\e[4~' end-of-line
 
+# Trying out oh my zsh color man for awhile
 #Colored ManPages
-export LESS_TERMCAP_mb=$'\E[01;31m'
-export LESS_TERMCAP_md=$'\E[01;31m'
-export LESS_TERMCAP_me=$'\E[0m'
-export LESS_TERMCAP_se=$'\E[0m'
-export LESS_TERMCAP_so=$'\E[01;44;33m'
-export LESS_TERMCAP_ue=$'\E[0m'
-export LESS_TERMCAP_us=$'\E[01;32m'
-export PAGER=less 
+#export LESS_TERMCAP_mb=$'\E[01;31m'
+#export LESS_TERMCAP_md=$'\E[01;31m'
+#export LESS_TERMCAP_me=$'\E[0m'
+#export LESS_TERMCAP_se=$'\E[0m'
+#export LESS_TERMCAP_so=$'\E[01;44;33m'
+#export LESS_TERMCAP_ue=$'\E[0m'
+#export LESS_TERMCAP_us=$'\E[01;32m'
+#export PAGER=less 
 
 fpath=( ~/.zfunctions "${fpath[@]}" )
 autoload -Uz google
@@ -143,11 +134,14 @@ zstyle ':completion:*' verbose yes
 autoload -U colors && colors
 export SPROMPT="$fg[cyan]Correct $fg[red]%R$reset_color $fg[magenta]to $fg[green]%r?$reset_color ($fg[white]YES :: NO :: ABORT :: EDIT$fg[white])"
 
-export PATH=/home/kopri/scripts:/home/kopri/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
+#Sudo password prompt
+export SUDO_PROMT="[sudo] password for %u:"
+
+export PATH=/home/kopri/scripts:/home/kopri/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/local/games:/usr/games
 
 # Syntax Highlighting 
-source /home/kopri/.oh-my-zsh/custom/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /home/kopri/.oh-my-zsh/custom/zsh-syntax-highlighting-filetypes/zsh-syntax-highlighting-filetypes.zsh
+#source /home/kopri/.oh-my-zsh/custom/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+#source /home/kopri/.oh-my-zsh/custom/zsh-syntax-highlighting-filetypes/zsh-syntax-highlighting-filetypes.zsh
 
 # Apply Xresources colors to the TTY
 if [ "$TERM" = "linux" ]; then
@@ -158,5 +152,3 @@ if [ "$TERM" = "linux" ]; then
     done
     clear
 fi
-
-date | figlet -c
