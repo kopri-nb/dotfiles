@@ -1,0 +1,24 @@
+#!/bin/zsh
+while :; do
+clear
+    screenfetch
+    echo "[1] X session"
+    echo "[2] Z shell"
+    echo "[3] Screen session"
+    echo "[4] Suspend"
+    echo "[5] Hibernate"
+    echo "[6] Reboot"
+    echo "[7] Shut down"
+    read action
+    clear
+    case "$action" in
+        1) startx ;;
+        2) zsh ;;
+        3) screen -r || ( screen -x || screen ) ;;
+        4) sudo pm-suspend ;;
+        5) sudo pm-hibernate ;;
+        6) sudo reboot ;;
+        7) sudo shutdown now -h ;;
+        *) which ${action[0]} &> /dev/null && $action
+    esac
+done
