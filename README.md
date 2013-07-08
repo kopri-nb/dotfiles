@@ -7,4 +7,4 @@ I do not claim to have authored each file here, some were collected and I will b
 
 
 
-[![configs in use](https://raw.github.com/kopri-nb/dotfiles/master/example.png)]
+[![configs in use](https://raw.github.com/kopri-nb/dotfiles/blob/master/example.png)]
