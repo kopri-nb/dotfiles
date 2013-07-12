@@ -21,8 +21,8 @@ Xft.lcdfilter: lcddefault
 *background: #151515
 
 !BLACK
-*color0:     #393939
-*color8:     #474747
+*color0:     #666666
+*color8:     #CCCCCC
 
 !RED
 *color1:     #BF1E2D
@@ -30,11 +30,11 @@ Xft.lcdfilter: lcddefault
 
 !GREEN
 *color2:     #9DBA3A
-*color10:    #A9C938
+*color10:    #B2FF5E
 
 !YELLOW
-*color3:     #D0D26B
-*color11:    #C8BC45
+*color3:     #FFE863
+*color11:    #F5BE58
 
 !BLUE
 *color4:     #6D9CBE
@@ -45,12 +45,12 @@ Xft.lcdfilter: lcddefault
 *color13:    #E16A98
 
 !CYAN
-*color6:     #435D75
+*color6:     #1693A5
 *color14:    #6E98A4
 
 !WHITE
 *color7:     #EBEBEB
-*color15:    #CCCCCC
+*color15:    #756160
 
 ! Dat font
 urxvt*font: 			       xft:uushi:pixelsize=9:antialias=true:hinting=true
@@ -104,6 +104,17 @@ Xcursor.theme: Neutral_Plus
 !Xcursor.theme: Vanilla-DMZ-AA
 Xcursor.size: 48
 
+xfontsel*background: #151515
+xfontsel*foreground: #EBEBEB
+xfontsel*font: -*-gohufontmod-*-*-*-*-*-*-*-*-*-*-*-*
+
+xman*jumpScroll: true
+xman*multiScroll: true
+xman*scrollBar: 0
+xman*background: #151515
+xman*foreground: #EBEBEB
+xman*manualFontBoldColor: #9DBA3A
+xman*manualFontItalicColor: #6495ed
 
 ! xscreensaver ---------------------------------------------------------------
 
