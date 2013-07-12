@@ -1,0 +1,99 @@
+[submodule "bundle/pathogen"]
+	path = bundle/pathogen
+	url = http://github.com/tpope/vim-pathogen.git
+[submodule "bundle/fugitive"]
+	path = bundle/fugitive
+	url = http://github.com/tpope/vim-fugitive.git
+[submodule "bundle/nerdtree"]
+	path = bundle/nerdtree
+	url = http://github.com/scrooloose/nerdtree.git
+[submodule "bundle/nerdcommenter"]
+	path = bundle/nerdcommenter
+	url = http://github.com/scrooloose/nerdcommenter.git
+[submodule "bundle/command-t"]
+	path = bundle/command-t
+	url = http://github.com/wincent/Command-T.git
+[submodule "bundle/surround"]
+	path = bundle/surround
+	url = http://github.com/tpope/vim-surround.git
+[submodule "bundle/repeat"]
+	path = bundle/repeat
+	url = http://github.com/tpope/vim-repeat.git
+[submodule "bundle/markdown"]
+	path = bundle/markdown
+	url = http://github.com/tpope/vim-markdown.git
+[submodule "bundle/indent-guides"]
+	path = bundle/indent-guides
+	url = git://github.com/nathanaelkane/vim-indent-guides.git
+[submodule "bundle/delimitmate"]
+	path = bundle/delimitmate
+	url = https://github.com/Raimondi/delimitMate.git
+[submodule "bundle/coffee-script"]
+	path = bundle/coffee-script
+	url = https://github.com/kchmck/vim-coffee-script.git
+[submodule "bundle/fugitive-extradite"]
+	path = bundle/fugitive-extradite
+	url = https://github.com/int3/vim-extradite.git
+[submodule "bundle/calendar"]
+	path = bundle/calendar
+	url = https://github.com/mattn/calendar-vim.git
+[submodule "bundle/fugitive-gitv"]
+	path = bundle/fugitive-gitv
+	url = https://github.com/gregsexton/gitv.git
+[submodule "bundle/tagbar"]
+	path = bundle/tagbar
+	url = git://github.com/majutsushi/tagbar
+[submodule "bundle/ack"]
+	path = bundle/ack
+	url = https://github.com/mileszs/ack.vim.git
+[submodule "bundle/gist"]
+	path = bundle/gist
+	url = https://github.com/mattn/gist-vim.git
+[submodule "bundle/bclose"]
+	path = bundle/bclose
+url=https://github.com/cespare/vim-bclose.git
+[submodule "bundle/less"]
+	path = bundle/less
+	url = https://github.com/groenewege/vim-less.git
+[submodule "bundle/syntastic"]
+	path = bundle/syntastic
+	url = http://github.com/scrooloose/syntastic.git
+[submodule "bundle/ultisnips"]
+	path = bundle/ultisnips
+	url = http://github.com/SirVer/ultisnips.git
+[submodule "bundle/tabular"]
+	path = bundle/tabular
+	url = https://github.com/godlygeek/tabular.git
+[submodule "bundle/pythontextobj"]
+	path = bundle/pythontextobj
+	url = git@github.com:arnar/vim-pythontextobj.git
+[submodule "bundle/yesod-template-syntax"]
+	path = bundle/yesod-template-syntax
+	url = https://github.com/pbrisbin/html-template-syntax.git
+[submodule "bundle/splice"]
+	path = bundle/splice
+	url = https://github.com/sjl/splice.vim.git
+[submodule "bundle/matchopen"]
+	path = bundle/matchopen
+	url = http://github.com/arnar/vim-matchopen.git
+[submodule "bundle/solarized"]
+	path = bundle/solarized
+	url = https://github.com/altercation/vim-colors-solarized.git
+[submodule "bundle/scala"]
+	path = bundle/scala
+	url = https://github.com/derekwyatt/vim-scala.git
+[submodule "bundle/jedi"]
+	path = bundle/jedi
+	url = https://github.com/davidhalter/jedi-vim.git
+[submodule "bundle/gitgutter"]
+	path = bundle/gitgutter
+	url = https://github.com/airblade/vim-gitgutter
+[submodule "bungle/vim-airline"]
+	path = bungle/vim-airline
+	url = http://github.com/bling/vim-airline
+[submodule "vim-bufferline"]
+	path = vim-bufferline
+	url = https://github.com/bling/vim-bufferline
+[submodule "bundle/vim-bufferline"]
+	path = bundle/vim-bufferline
+	url = https://github.com/bling/vim-bufferline

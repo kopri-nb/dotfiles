@@ -1,0 +1,6 @@
+tags
+undodir
+*.swp
+haskellmode.config
+spell
+.netrwhist

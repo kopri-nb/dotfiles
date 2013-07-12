@@ -1,0 +1,111 @@
+snippet $ "Variable expansion" i
+\$\{$1\}
+endsnippet
+
+snippet nspy "py namespace"
+xmlns:py="http://genshi.edgewall.org/"
+endsnippet
+
+snippet nsxi 
+xmlns:xi="http://www.w3.org/2001/XInclude"
+endsnippet
+
+snippet xinc 
+<xi:include href="$1" />
+endsnippet
+
+snippet attrs 
+py:attrs=${1:select(\'@*\')}
+endsnippet
+
+snippet choose 
+py:choose="$1"
+endsnippet
+
+snippet echoose 
+<py:choose test="$1">
+	$0
+</py:choose>
+endsnippet
+
+snippet content 
+py:content="$1"
+endsnippet
+
+snippet def 
+py:def="$1"
+endsnippet
+
+snippet edef 
+<py:def function="$1">
+	$0
+</py:def>
+endsnippet
+
+snippet for 
+py:for="$1 in $2"
+endsnippet
+
+snippet efor 
+<py:for each="$1 in $2">
+	$0
+</py:for>
+endsnippet
+
+snippet if 
+py:if="$1"
+endsnippet
+
+snippet eif 
+<py:if test="$1">
+	$0
+</py:if>
+endsnippet
+
+snippet match 
+py:match="${1:path}"
+endsnippet
+
+snippet ematch 
+<py:match path="${1:path}">
+	$0
+</py:match>
+endsnippet
+
+snippet otherwise 
+py:otherwise=""
+endsnippet
+
+snippet eotherwise 
+<py:otherwise>
+	$1
+</py:otherwise>
+endsnippet
+
+snippet replace 
+py:replace="$1"
+endsnippet
+
+snippet strip 
+py:strip="$1"
+endsnippet
+
+snippet when 
+py:when="$1"
+endsnippet
+
+snippet ewhen 
+<py:when test="$1">
+	$0
+</py:when>
+endsnippet
+
+snippet with 
+py:with="$1 = $2"
+endsnippet
+
+snippet ewith 
+<py:with vars="$1 = $2">
+	$0
+</py:with>
+endsnippet

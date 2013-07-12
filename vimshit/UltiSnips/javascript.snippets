@@ -1,0 +1,17 @@
+snippet require "require.js require" !b
+require([$1], function(${2:`!p snip.rv = ', '.join(m.strip(' \n\t\'\"').split('/')[-1] for m in t[1].split(','))`}) {
+	$0
+});
+endsnippet
+
+snippet describe "Jasmine describe" !b
+describe('$1', function() {
+	$0
+});
+endsnippet
+
+snippet it "Jasmine test" !b
+it('$1', function() {
+	$0
+});
+endsnippet
