@@ -14,7 +14,7 @@ body {
 
     background-attachment: fixed !important;
 
-    background-color: #f9f9f9 !important;
+    background-color: #151515 !important;
 
     /*background-image: url("chrome://browser/skin/newtab/noise.png"), linear-gradient(rgba(255,255,255,0.5), rgba(255, 255, 255, 0.2)) !important; */
 
@@ -30,7 +30,7 @@ body {
 
 #header {
 
-    background: #f9f9f9 !important;
+    background: #151515 !important;
 
     border-bottom: none !important;
 
@@ -46,7 +46,7 @@ body {
             top: 0px !important;
             font-weight: normal !important;
 
-            background: #505050 !important;
+            background: #151515 !important;
 
             height: 16px !important;
             line-height: 12px !important;
@@ -63,7 +63,7 @@ body {
 
             /*background-image: url('http://ompldr.org/vZmJsNQ') !important;
 
-color: #FFF !important;
+color: #EBEBEB !important;
 
 cursor: pointer;
 position: fixed !important;*/
@@ -75,7 +75,7 @@ position: fixed !important;*/
 
         #sr-header-area a {
 
-            color: #a2a2a2 !important;
+            color: #EBEBEB !important;
 
             font-size: 9px !important;
 
@@ -90,7 +90,7 @@ position: fixed !important;*/
 
             #sr-header-area a:hover {
 
-                color: #FFF !important;
+                color: #EBEBEB !important;
 
             }
 
@@ -99,7 +99,7 @@ position: fixed !important;*/
 
         .sr-bar .separator {
 
-            color: #909090 !important
+            color: #EBEBEB !important
 
         }
 
@@ -108,9 +108,9 @@ position: fixed !important;*/
 
         #sr-more-link {
 
-            background: #505050 !important;
+            background: #151515 !important;
 
-            color: #FFF !important;
+            color: #EBEBEB !important;
 
             height: 13px !important;
             line-height: 11px !important;
@@ -125,7 +125,7 @@ position: fixed !important;*/
         /*#sr-more-link::before {
 content: url('http://ompldr.org/vZmJsNQ') !important;
 text-align: center !important;
-background: #505050 !important;
+background: #151515 !important;
 height: 15px !important;
 max-width: 22px !important;
 min-width: 22px !important;
@@ -170,7 +170,7 @@ content: url('http://ompldr.org/vZmJsNQ') !important;
 
                 background: transparent !important;
 
-                color: #909090 !important;
+                color: #EBEBEB !important;
 
                 font-size: 9px !important;
 
@@ -187,7 +187,7 @@ content: url('http://ompldr.org/vZmJsNQ') !important;
 
                 .tabmenu li a:hover {
 
-                    color: #3f3f3f !important;
+                    color: #151515 !important;
 
                 }
 
@@ -195,7 +195,7 @@ content: url('http://ompldr.org/vZmJsNQ') !important;
 
                 .tabmenu li.selected a {
 
-                    color: #3f3f3f !important;
+                    color: #EBEBEB !important;
                     background: transparent !important;
                     border: 0px none !important;
 
@@ -216,7 +216,7 @@ content: url('http://ompldr.org/vZmJsNQ') !important;
 
     #header-bottom-right {
 
-        background: #f9f9f9 !important;
+        background: #151515 !important;
 
         box-shadow: none !important;
 
@@ -235,7 +235,7 @@ content: url('http://ompldr.org/vZmJsNQ') !important;
 
         #header-bottom-right a {
 
-            color: #909090 !important;
+            color: #151515 !important;
 
             transition: 0.5s color ease;
 
@@ -245,7 +245,7 @@ content: url('http://ompldr.org/vZmJsNQ') !important;
 
             #header-bottom-right a:hover {
 
-                color: #3f3f3f !important;
+                color: #151515 !important;
 
                 text-decoration: none !important;
 
@@ -257,15 +257,31 @@ content: url('http://ompldr.org/vZmJsNQ') !important;
 
             border: 0 !important;
 
-            color: #646464;
+            color: #9DBA3A;
 
             font-weight: 300 !important;
 
         }
+        
+
+        
+        .user  {
+
+            border: 0 !important;
+
+            color: #EBEBEB;
+
+            font-weight: 300 !important;
+
+        }
+        
+        
 
         
 
         .pref-lang {
+        
+            color: #ebebeb;       
 
             font-weight: 300 !important;
 
@@ -297,7 +313,7 @@ pagename a {
 
 .side {
 
-    background: #FFF !important;
+    background: #EBEBEB !important;
 
     box-shadow: rgba(0,0,0,0.25) 0 0 10px !important;
     border: 1px solid #505050 !important;
@@ -318,7 +334,7 @@ pagename a {
 .side::before {
     content: url('http://ompldr.org/vZmVpNg');
     text-align: center !important;
-    background: #505050 !important;
+    background: #151515 !important;
     height: 15px !important;
     max-width: 22px !important;
     min-width: 22px !important;
@@ -341,7 +357,7 @@ pagename a {
 
 
 .sidebox .subtitle {
-    background: #f9f9f9 !important;
+    background: #151515 !important;
 }
 
 .sidebox .spacer {
@@ -358,7 +374,7 @@ pagename a {
 }
 
 a {
-    color: #1a1a1a !important;
+    color: #EBEBEB !important;
     font-weight: normal !important;
     text-decoration: none !important;
 }
@@ -371,7 +387,7 @@ a {
 }
 
 .titlebox h1 {
-    color: black !important;
+    color: white !important;
     font-family: Helvetica !important;
     font-size: 11px !important;
     text-align: center !important;
@@ -383,7 +399,7 @@ a {
 
 .titlebox h1 a {
     display: none !important;
-    color: black !important;
+    color: white !important;
     font-family: Helvetica !important;
     font-size: 12px !important;
     text-align: center !important;
@@ -404,8 +420,8 @@ a {
 .linkinfo {
     padding: 5px;
     border: 1px solid rgb(95, 153, 207);
-    background-color: #f5f5f5 !important;
-    color: #3f3f3f;
+    background-color: #151515 !important;
+    color: #EBEBEB;
     font-size: larger;
     border-radius: 3px 3px 3px 3px;
     text-align: center !important;
@@ -415,7 +431,7 @@ a {
         font-family: Helvetica !important;
         font-size: 16px !important;
         font-weight: bold;
-        color: #1c1c1c !important;
+        color: #151515 !important;
 
     }
 
@@ -423,7 +439,7 @@ a {
         font-size: 18px !important;
         font-weight: bold;
         font-family: Helvetica !important;
-        color: #1c1c1c !important;
+        color: #151515 !important;
     }
 
     .linkinfo .upvotes {
@@ -450,16 +466,16 @@ a {
 
 
 .link {
-    color: #677996 !important;
+    color: #EBEBEB !important;
 
-    border: 1px solid #c3c3c3 !important;
+    border: 1px solid #EBEBEB !important;
 
     min-height: 60px;
 
     padding: 12px 0 !important;
 
     position: relative;
-    background: #f9f9f9 !important;
+    background: #151515 !important;
     margin-bottom: -1px !important;
     width: 80% !important;
     right: 10% !important;
@@ -476,7 +492,7 @@ a {
 
 .link.last-clicked {
 
-    color: #3f3f3f !important;
+    color: #333333 !important;
 
 }
 
@@ -494,7 +510,7 @@ a {
 
         .link .thumbnail img {
 
-            border: 1px solid #1c1c1c !important;
+            border: 1px solid #ebebeb !important;
 
             box-shadow: rgba(0,0,0,0.2) 0 0 8px !important;
             width: auto !important;
@@ -513,7 +529,7 @@ a {
 
         .thing .title.loggedin {
 
-            color: #3f3f3f !important;
+            color: #ebebeb !important;
 
             font-size: 9px !important;
 
@@ -534,7 +550,7 @@ a {
 
             box-shadow: none !important;
 
-            color: #909090 !important;
+            color: #ebebeb !important;
 
         }
         
@@ -554,17 +570,19 @@ a {
 
     .link .flat-list {
 
-        font-size: 14px !important;
+        color: #ebebeb !important;
 
+        font-size: 14px !important;
+        
     }
 
     
 
         .entry .buttons li a {
             /*background: transparent !important;
-border: 0px #eee !important;*/
+border: 0px #ebebeb !important;*/
 
-            color: #909090 !important;
+            color: #ebebeb !important;
             font-size: 11px !important;
 
             font-weight: normal !important;
@@ -581,7 +599,7 @@ border: 0px #eee !important;*/
                 /*background: transparent !important;
 border: 0px #eee !important;*/
 
-                color: #1c1c1c !important;
+                color: #ebebeb !important;
 
                 text-decoration: none !important;
 
@@ -596,7 +614,7 @@ border: 0px #eee !important;*/
 }
 
 .title {
-    color: #677996 !important;
+    color: #ebebeb !important;
     background: none !important;
     text-align: left;
 }
@@ -627,35 +645,35 @@ a.author {
 /* submitting a link */
 
 .roundfield {
-    background: #f5f5f5 !important;
+    background: #151515 !important;
     -webkit-border-radius: 10px;
     border-radius: 10px !important;
     margin: 0 auto !important;
-    border: 1px solid #909090 !important;
+    border: 1px solid #ebebeb !important;
 }
 
 .roundfield textarea {
     width:492px!important;
     -webkit-border-radius: 10px;
     border-radius: 10px;
-    color: #3f3f3f !important;
-    background: #f9f9f9 !important;
+    color: #ebebeb !important;
+    background: #151515 !important;
 }
 
     .roundfield .title {
-        color: #3f3f3f !important;
+        color: #ebebeb !important;
     }
 
 .textarea {
-    color: #3f3f3f !important;
-    background: #fff !important;
+    color: #ebebeb !important;
+    background: #151515 !important;
     border: none !important;
 }
 
 #link-desc.infobar {
-    background-color: #f9f9f9 !important;
-    color: #646464 !important;
-    border-color: #909090 !important;
+    background-color: #151515 !important;
+    color: #ebebeb !important;
+    border-color: #ebebeb !important;
     -webkit-border-radius: 0px;
     border-radius: 10px;
     border:none !important;
@@ -686,23 +704,23 @@ a.author {
 }
 
 .infobar {
-    background: #f5f5f5 !important;
-    border: #333 1px solid !important;
+    background: #151515 !important;
+    border: #ebebeb 1px solid !important;
     -webkit-border-radius:10px;
     border-radius:10px;
 }
 
 
 #url {
-    color: #3f3f3f !important;
-    background: #f5f5f5 !important;
+    color: #ebebeb !important;
+    background: #151515 !important;
     -webkit-border-radius:5px;
     border-radius:5px;
 }
 
 #sr-autocomplete {
-    color: #3f3f3f !important;
-    background: #fff !important;
+    color: #ebebeb !important;
+    background: #151515 !important;
     -webkit-border-radius:5px;
     border-radius: 5px;
 }
@@ -713,8 +731,8 @@ a.author {
 }
 
 #text-desc.infobar {
-    background: #f5f5f5 !important;
-    color: #3f3f3f !important;
+    background: #ebebeb !important;
+    color: #ebebeb !important;
 }
 
 .nextprev {
@@ -732,7 +750,7 @@ a.author {
     overflow: hidden;
     border: none !important;
     margin-bottom: 5px;
-    background: #f9f9f9 !important;
+    background: #ebebeb !important;
     top: 10px !important;
     width: 100% !important;
 }
@@ -743,7 +761,7 @@ a.author {
     
     .sr-interest-bar .query-box {
         position: relative;
-        border: 1px solid #909090 !important;
+        border: 1px solid #ebebeb !important;
     }
     
     .sr-interest-bar .query {
@@ -768,7 +786,7 @@ a.author {
     .raisedbox h4 {
         font-weight: normal !important;
         text-align: left !important;
-        border: 1px solid #909090 !important;
+        border: 1px solid #ebebeb !important;
     }
 
 .infobar {
@@ -780,12 +798,12 @@ a.author {
     text-align: center !important;
     padding: 0px 0px 0px 0px !important;
     width: 100% !important;
-    color: #646464 !important;
+    color: #ebebeb !important;
 }
 
 .dropdown.lightdrop .selected {
     text-decoration: none !important;
-    color: #1a1a1a !important;
+    color: #ebebeb !important;
 }
 
 .selected, .choice.primary {
