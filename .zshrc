@@ -20,6 +20,7 @@ alias tcpdump='sudo tcpdump -i eth0'
 alias installfont='sudo fc-cache -f -v'
 alias diff='colordiff'
 alias c='clear'
+alias e='exit'
 alias cp='cp -Rv'
 alias pstree++='~/scripts/pstree_color -pl'
 alias serve='python -m SimpleHTTPServer 8080'
@@ -41,16 +42,19 @@ alias ......='cd ../../../../..'
 alias .......='cd ../../../../../..'
 alias dirsize='du -h --max-depth=1 "$@" | sort -k 1,1hr -k 2,2f'
 alias creationdate='stat -F '%D' +mtime'
-alias internalip='print ${${$(LC_ALL=C /sbin/ifconfig eth0)[7]}:gs/addr://}'
+alias internalip='print ${${$(LC_ALL=C /bin/ifconfig eth0)[7]}:gs/addr://}'
 alias freespace='clear;echo "Drive      Size  Used  Avail Use  Mounted on";df -h|grep sd|column -t|sort && df -h --total|cut -c 1-11,17-37|tail -n1'
 alias magnet-to-torrent='aria2c -q --bt-metadata-only --bt-save-metadata'
 alias biggest='find -type f -printf '\''%s %p\n'\'' | sort -nr | head -n 40 | gawk "{ print \$1/1000000 \" \" \$2 \" \" \$3 \" \" \$4 \" \" \$5 \" \" \$6 \" \" \$7 \" \" \$8 \" \" \$9 }"'
 alias tardir='( ( D=`builtin pwd`; F=$(date +$HOME/`sed "s,[/ ],#,g" <<< ${D/${HOME}/}`#-%F.tgz); S=$SECONDS; tar --ignore-failed-read --transform "s,^${D%/*},`date +${D%/*}.%F`,S" -czPf "$"F "$D" && logger -s "Tarred $D to $F in $(($SECONDS-$S)) seconds" ) & )'
 
-#suffix alias
+# Suffix alias
 alias -s txt=vim
 alias -s jpg=feh
 alias -s png=feh
+
+#Global Aliases
+alias -g SPRUNGE='| curl -F "sprunge=<-" http://sprunge.us'
 
 ## Get your external IP.
 [ -n "$(command -v curl)" ] && alias externalip='curl ifconfig.me'
@@ -66,7 +70,7 @@ export UPDATE_ZSH_DAYS=14
 COMPLETION_WAITING_DOTS="true"
 
 # ZSH pluginz
-plugins=(cp history nyan colored-man colorize)
+plugins=(cp history nyan colored-man colorize compleat dircycle git github git-extras systemd vi-mode web-search)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -91,18 +95,15 @@ bindkey '\e[4~' end-of-line
 
 fpath=( ~/.zfunctions "${fpath[@]}" )
 autoload -Uz google
-autoload -Uz killit
 autoload -Uz define
-autoload -Uz browseman
 autoload -Uz find++
-autoload -Uz cdf
 
 # Expanded Globbing
 setopt extended_glob 
 zmodload zsh/stat
 zmodload zsh/complist
 autoload zmv
-autoload -U compinit && compinit
+autoload -Uz compinit && compinit -i
 autoload -U zmv
 setopt HIST_IGNORE_DUPS
 setopt HIST_IGNORE_ALL_DUPS
@@ -139,9 +140,18 @@ export SUDO_PROMT="[sudo] password for %u:"
 
 export PATH=/home/kopri/scripts:/home/kopri/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/local/games:/usr/games
 
+dircolors=$HOME/.dircolors-$(tput colors)
+
+if [[ -f $dircolors ]]; then
+      eval $(dircolors -b $dircolors)
+    else
+          eval $(dircolors)
+        fi
+
 # Syntax Highlighting 
-#source /home/kopri/.oh-my-zsh/custom/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-#source /home/kopri/.oh-my-zsh/custom/zsh-syntax-highlighting-filetypes/zsh-syntax-highlighting-filetypes.zsh
+source /home/kopri/gitdir/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /home/kopri/scripts/live
+
 
 # Apply Xresources colors to the TTY
 if [ "$TERM" = "linux" ]; then
