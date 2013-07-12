@@ -2,7 +2,7 @@ My `.vim` directory.
 
 Installation:
 
-    git clone git://github.com/arnar/vim-config.git ~/.vim
+    git clone my dotfiles them cp dotfiles/vimshit ~/.vim
 
 Create symlinks:
 
