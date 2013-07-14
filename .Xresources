@@ -34,7 +34,7 @@ Xft.lcdfilter: lcddefault
 
 !YELLOW
 *color3:     #FFE863
-*color11:    #F5BE58
+*color11:    #ECF9C7
 
 !BLUE
 *color4:     #6D9CBE
@@ -50,7 +50,7 @@ Xft.lcdfilter: lcddefault
 
 !WHITE
 *color7:     #EBEBEB
-*color15:    #756160
+*color15:    #C5E0DC
 
 ! Dat font
 urxvt*font: 			       xft:uushi:pixelsize=9:antialias=true:hinting=true
@@ -79,7 +79,15 @@ URxvt*cursorUnderline:   True
 
 
 !Perl extensions
-URxvt.perl-ext-common :  default,matcher,clipboard
+URxvt.perl-ext-common :  default,matcher,clipboard,url-select,keyboard-select
+
+URxvt*keysym.M-u: perl:url-select:select_next
+
+URxvt*keysym.M-s: perl:keyboard-select:search
+
+
+URxvt.url-select.launcher: /usr/bin/firefox -new-tab
+URxvt.url-select.underline: true
 
 !Link launching
 URxvt.urlLauncher     :  firefox
