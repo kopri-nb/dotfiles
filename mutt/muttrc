@@ -1,0 +1,154 @@
+#####.muttrc#####
+source "gpg2 -dq /home/kopri/.mutt/.my-pwds.gpg |"
+set realname   = 'kopri_nb'
+set from   = "kopri_nb@lavabit.com"
+
+set imap_user    = kopri_nb@lavabit.com
+set imap_pass=$my_pw_personal
+set folder   =imaps://lavabit.com:993
+set spoolfile    = +Inbox
+set postponed    = +Drafts
+set trash   = +Trash
+set record   = +Sent
+unset mark_old
+set thorough_search
+set delete
+set sleep_time = 0
+
+##Check mail regularly
+mailboxes    = +Inbox +Important +Sent +Github +Unixhub +Vim +Drafts +Archive +Trash 
+
+set postponed="+Drafts"
+
+# allow mutt to open new imap connection automatically
+set imap_passive   = no
+
+# keep imap connection alive by polling intermittently (time in seconds)
+set imap_keepalive   = 300
+
+# how often to check for new mail (time in seconds)
+set mail_check     = 60
+
+#Cache config stuff to speed everything up
+set header_cache   = ~/.mutt/cache/headers
+set message_cachedir   = ~/.mutt/cache/bodies
+set certificate_file   = ~/.mutt/certificates
+set edit_headers = yes
+set mailcap_path = ~/.mutt/mailcap
+
+# Settings
+set smart_wrap = yes
+set sort = 'threads'
+set sort_aux = 'last-date-received'
+
+#Sending emails
+set sendmail       = "/usr/bin/msmtp"
+set my_user        = kopri_nb@lavabit.com
+set smtp_pass      = $my_pw_personal
+set smtp_url       = smtps://kopri_nb@lavabit.com
+set ssl_force_tls  = yes
+set send_charset   = "utf-8"
+#set signature      = "fortune tao|"
+
+# Sidebar
+set sidebar_delim   = ' :'
+set sidebar_visible = yes
+set sidebar_width   = 24
+color sidebar_new blue default
+
+# Header stuff
+ignore "Authentication-Results:"
+ignore "DomainKey-Signature:"
+ignore "DKIM-Signature:"
+hdr_order Date From To Cc
+
+ignore *
+unignore from: date subject to cc
+unignore x-mailing-list: posted-to:
+unignore x-mailer:
+unignore From:
+unignore To:
+unignore Reply-To:
+unignore Subject:
+unignore Date:
+unignore CC:
+unignore BCC:
+unignore X-Mailer:
+unignore User-Agent:
+
+unmy_hdr *
+unset use_domain
+unset user_agent
+my_hdr X-Info: Keep It Simple, Stupid.
+my_hdr X-Operating-System: 'uname -s', kernel 'uname -r'
+my_hdr X-Now-Playing:`mpc --format "%artist% - %title% on %album%"|head -1`
+my_hdr User-Agent: Mutt
+
+# Vim like binds
+bind pager j next-line
+bind pager k previous-line
+bind index gg first-entry
+bind index G last-entry
+bind index j next-entry
+bind index k previous-entry
+bind index f change-folder
+bind index * flag-message
+bind index "^" imap-fetch-mail
+
+# Sidebar Navigation ---------------------------------
+bind index,pager <down>   sidebar-next
+bind index,pager <up>     sidebar-prev
+bind index,pager <right>  sidebar-open
+
+bind pager gg top
+bind pager G  bottom
+
+bind pager R  group-reply
+
+# Saner copy/move dialogs
+macro index C "<copy-message>?<toggle-mailboxes>" "copy a message to a mailbox"
+macro index M "<save-message>?<toggle-mailboxes>" "move a message to a mailbox" 
+
+# View attachments properly.
+bind attach <return> view-mailcap
+
+macro index gi "<change-folder>=INBOX<enter>" "Go to inbox"
+
+macro index \' "<tag-pattern>~R !~D !~F<enter>\
+<tag-prefix><save-message>imaps://lavabit.com:993/Archive <enter>" \
+"Archive
+
+# macro index    G "!fetchmail\n"   "Invoke fetchmail"
+# macro pager    G "!fetchmail\n"   "Invoke fetchmail"
+
+# Use abook with Mutt 
+set query_command="abook --mutt-query '%s'"
+macro index a     "|abook --add-email\n" 'add sender to abook'
+macro pager a     "|abook --add-email\n" 'add sender to abook'
+
+# View URLs inside Mutt
+macro index \cb   "|urlview\n"
+macro pager \cb   "|urlview\n"
+
+# For better looks
+set markers    = no #(don't put '+' at the beginning of wrapped lines)
+set pager_index_lines  = 8 # how large is the index window?
+set sort     = 'threads'
+set sort_aux     = 'last-date-received'
+
+set pager_context = 3      # number of context lines to show
+set pager_stop             # don't go to next message automatically
+set menu_scroll            # scroll in menus
+set tilde                  # show tildes like in vim
+unset markers              # no ugly plus signs
+
+set quote_regexp = "^( {0,4}[>|:#%]| {0,4}[a-z0-9]+[>|]+)+"
+alternative_order text/plain text/enriched text/html
+
+# Rolodeck
+set alias_file   = ~/.mutt/aliases
+set sort_alias   = alias
+set reverse_alias  = yes
+#source $alias_file
+source /home/kopri/.mutt/colors.mutt
+set editor='vim + -c "set textwidth=72" -c "set wrap" -c "set nocp" -c "?^$"'

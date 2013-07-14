@@ -1,0 +1,66 @@
+# -*- muttrc -*-
+#
+# Colour settings for mutt.
+#
+
+# Default colour definitions
+color hdrdefault default color234
+color quoted yellow default
+color quoted1 green default
+color quoted2 blue default
+color quoted3 red default
+color signature black default
+color indicator color233 blue
+color attachment yellow default
+color error red default
+color message blue default
+color search brightwhite magenta
+color status white default
+color tree red default
+color normal default default
+color tilde green default
+color bold brightblue default
+color markers red default
+
+# Colour definitions when on a mono screen
+mono bold bold
+mono underline underline
+mono indicator reverse
+
+# Colours for items in the reader
+color header white black "^From:"
+color header white black "^Subject:"
+color header yellow color235 "^X-Junked-Because: "
+color header brightred color235 "^X-Virus-hagbard: .* FOUND"
+mono header bold "^(From|Subject|X-Junked-Because|X-Virus-hagbard):"
+
+# Colours for items in the index
+color index brightgreen default ~U # Unread
+color index red default ~F # Flagged
+color index brightblue default ~T # Tagged
+color index color232 red ~D # Deleted
+color index green default ~Q # Replied
+
+# Highlights inside the body of a message.
+
+# URLs
+color body brightblue default "(http|https|ftp|news|telnet|finger)://[^ \">\t\r\n]*"
+color body brightblue default "mailto:[-a-z_0-9.]+@[-a-z_0-9.]+"
+color body brightblue default "news:[^ \">\t\r\n]*"
+mono body bold "(http|https|ftp|news|telnet|finger)://[^ \">\t\r\n]*"
+mono body bold "mailto:[-a-z_0-9.]+@[-a-z_0-9.]+"
+mono body bold "news:[^ \">\t\r\n]*"
+
+# email addresses
+color body brightblue default "[-a-z_0-9.%$]+@[-a-z_0-9.]+\\.[-a-z][-a-z]+"
+mono body bold "[-a-z_0-9.%$]+@[-a-z_0-9.]+\\.[-a-z][-a-z]+"
+
+# Various smilies and the like
+color body brightgreen default "<[Gg]>" # <g>
+color body brightgreen default "<[Bb][Gg]>" # <bg>
+color body brightgreen default " [;:]-*[)>(<|]" # :-) etc...
+color body brightblue default "(^|[[:space:]])\\*[^[:space:]]+\\*([[:space:]]|$)" # *Bold* text.
+color body brightblue default "(^|[[:space:]])_[^[:space:]]+_([[:space:]]|$)" # _Underlined_ text.
+color body brightblue default "(^|[[:space:]])/[^[:space:]]+/([[:space:]]|$)" # /Italic/ text.
+
+# vim: set filetype=muttrc ts=2 sw=2 tw=0 :

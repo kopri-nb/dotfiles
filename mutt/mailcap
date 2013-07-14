@@ -1,0 +1,107 @@
+# HTML
+text/calendar; /usr/bin/firefox %s;
+text/html; /usr/bin/firefox %s;
+text/html; lynx -dump -assume_charset=%{charset} -display_charset=utf-8 %s; copiousoutput; nametemplate=%s.html
+
+# Images
+image/jpeg; /usr/local/bin/sxiv '%s'; description=JPEG Image; test=test -n "$DISPLAY"; nametemplate=%s.jpg
+image/png; /usr/local/bin/sxiv '%s'; description=PNG Image; test=test -n "$DISPLAY"; nametemplate=%s.png
+image/gif; /usr/local/bin/sxiv '%s'; description=GIF Image; test=test -n "$DISPLAY"; nametemplate=%s.gif
+
+# Audio
+audio/x-8svx;/usr/bin/mplayer %s
+audio/8svx;/usr/bin/mplayer %s
+audio/x-16sv;/usr/bin/mplayer %s
+audio/168sv;/usr/bin/mplayer %s
+image/x-ilbm;/usr/bin/mplayer %s
+image/ilbm;/usr/bin/mplayer %s
+video/x-anim;/usr/bin/mplayer %s
+video/anim;/usr/bin/mplayer %s
+video/mkv;/usr/bin/mplayer %s
+audio/x-pn-realaudio;/usr/bin/mplayer %s
+audio/x-pn-realaudio-plugin;/usr/bin/mplayer %s
+audio/x-real-audio;/usr/bin/mplayer %s
+application/vnd.rn-realmedia;/usr/bin/mplayer %s
+video/x-flic;/usr/bin/mplayer %s
+video/quicktime;/usr/bin/mplayer %s
+video/x-quicktime;/usr/bin/mplayer %s
+application/x-quicktimeplayer;/usr/bin/mplayer %s
+video/msvideo;/usr/bin/mplayer %s
+video/x-msvideo;/usr/bin/mplayer %s
+audio/wav;/usr/bin/mplayer %s
+audio/x-pn-wav;/usr/bin/mplayer %s
+audio/x-pn-windows-acm;/usr/bin/mplayer %s
+audio/basic;/usr/bin/mplayer %s
+audio/x-basic;/usr/bin/mplayer %s
+audio/x-pn-au;/usr/bin/mplayer %s
+audio/x-realaudio;/usr/bin/mplayer %s
+audio/x-aiff;/usr/bin/mplayer %s
+audio/aiff;/usr/bin/mplayer %s
+audio/x-pn-aiff;/usr/bin/mplayer %s
+image/png;/usr/bin/mplayer %s
+image/x-png;/usr/bin/mplayer %s
+video/mng;/usr/bin/mplayer %s
+video/x-mng;/usr/bin/mplayer %s
+video/x-ms-asf;/usr/bin/mplayer %s
+video/x-ms-wmv;/usr/bin/mplayer %s
+video/x-ms-wma;/usr/bin/mplayer %s
+application/vnd.ms-asf;/usr/bin/mplayer %s
+application/x-mplayer2;/usr/bin/mplayer %s
+video/x-ms-asf-plugin;/usr/bin/mplayer %s
+video/x-ms-wvx;/usr/bin/mplayer %s
+video/x-ms-wax;/usr/bin/mplayer %s
+audio/x-ogg;/usr/bin/mplayer %s
+audio/x-speex;/usr/bin/mplayer %s
+application/x-ogg;/usr/bin/mplayer %s
+video/mpeg;/usr/bin/mplayer %s
+video/x-mpeg;/usr/bin/mplayer %s
+application/x-flac;/usr/bin/mplayer %s
+audio/mpeg2;/usr/bin/mplayer %s
+audio/x-mpeg2;/usr/bin/mplayer %s
+audio/mpeg3;/usr/bin/mplayer %s
+audio/x-mpeg3;/usr/bin/mplayer %s
+audio/mpeg;/usr/bin/mplayer %s
+audio/x-mpeg;/usr/bin/mplayer %s
+x-mpegurl;/usr/bin/mplayer %s
+audio/mpegurl;/usr/bin/mplayer %s
+audio/mp3;/usr/bin/mplayer %s
+audio/x-mp3;/usr/bin/mplayer %s
+
+# Office
+application/pdf; /usr/bin/zathura %s; test=test "$DISPLAY" != ""; description=Portable Document Format; nametemplate=%s.pdf
+application/vnd.openxmlformats-officedocument.wordprocessingml.document;libreoffice %s
+application/vnd.openxmlformats-officedocument.wordprocessingml.template;libreoffice %s
+application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;libreoffice %s
+application/vnd.openxmlformats-officedocument.spreadsheetml.template;libreoffice %s
+application/vnd.openxmlformats-officedocument.presentationml.presentation;libreoffice %s
+application/vnd.sun.xml.writer;/usr/bin/libreoffice %s
+application/vnd.sun.xml.writer.global;/usr/bin/libreoffice %s
+application/vnd.stardivision.writer;/usr/bin/libreoffice %s
+application/vnd.stardivision.writer-global;/usr/bin/libreoffice %s
+application/x-starwriter;/usr/bin/libreoffice %s
+application/vnd.sun.xml.writer.template;/usr/bin/libreoffice %s
+application/msword;/usr/bin/libreoffice %s
+application/vnd.sun.xml.calc;/usr/bin/libreoffice %s
+application/vnd.stardivision.calc;/usr/bin/libreoffice %s
+application/x-starcalc;/usr/bin/libreoffice %s
+application/vnd.sun.xml.calc.template;/usr/bin/libreoffice %s
+application/excel;/usr/bin/libreoffice %s
+application/msexcel;/usr/bin/libreoffice %s
+application/vnd.ms-excel;/usr/bin/libreoffice %s
+application/x-msexcel;/usr/bin/libreoffice %s
+application/vnd.sun.xml.impress;/usr/bin/libreoffice %s
+application/vnd.stardivision.impress;/usr/bin/libreoffice %s
+application/vnd.stardivision.impress-packed;/usr/bin/libreoffice %s
+application/x-starimpress;/usr/bin/libreoffice %s
+application/vnd.sun.xml.impress.template;/usr/bin/libreoffice %s
+application/powerpoint;/usr/bin/libreoffice %s
+application/mspowerpoint;/usr/bin/libreoffice %s
+application/vnd.ms-powerpoint;/usr/bin/libreoffice %s
+application/x-mspowerpoint;/usr/bin/libreoffice %s
+application/vnd.sun.xml.draw;/usr/bin/libreoffice %s
+application/vnd.stardivision.draw;/usr/bin/libreoffice %s
+application/x-stardraw;/usr/bin/libreoffice %s
+application/vnd.sun.xml.draw.template;/usr/bin/libreoffice %s
+application/vnd.sun.xml.math;/usr/bin/libreoffice %s
+application/vnd.stardivision.math;/usr/bin/libreoffice %s
+application/x-starmath;/usr/bin/libreoffice %s
