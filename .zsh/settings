@@ -1,0 +1,12 @@
+# Show dem dots when waiting for compinit
+COMPLETION_WAITING_DOTS="true"
+
+CASE_SENSITIVE="true"
+
+export UPDATE_ZSH_DAYS=14
+
+#Make sure to use UTF-8
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+export LANGUAGE=en_US.UTF-8
+export COLORTERM="YES"
