@@ -17,40 +17,74 @@ Xft.lcdfilter: lcddefault
 
 ! Urxvt configuration
 
-*foreground: #EBEBEB
-*background: #151515
+! *foreground: #EBEBEB
+! *background: #151515
 
 !BLACK
-*color0:     #666666
-*color8:     #CCCCCC
+! *color0:     #666666
+! *color8:     #CCCCCC
 
 !RED
-*color1:     #BF1E2D
-*color9:     #E7212A
+! *color1:     #BF1E2D
+! *color9:     #E7212A
 
 !GREEN
-*color2:     #9DBA3A
-*color10:    #B2FF5E
+! *color2:     #9DBA3A
+! *color10:    #B2FF5E
 
 !YELLOW
-*color3:     #FFE863
-*color11:    #ECF9C7
+! *color3:     #FFE863
+! *color11:    #ECF9C7
 
 !BLUE
-*color4:     #6D9CBE
-*color12:    #D0D0FF
+! *color4:     #6D9CBE
+! *color12:    #D0D0FF
 
 !MAGENTA
-*color5:     #B7416E
-*color13:    #E16A98
+! *color5:     #B7416E
+! *color13:    #E16A98
 
 !CYAN
-*color6:     #1693A5
-*color14:    #6E98A4
+! *color6:     #1693A5
+! *color14:    #6E98A4
 
 !WHITE
-*color7:     #EBEBEB
-*color15:    #C5E0DC
+! *color7:     #EBEBEB
+! *color15:    #C5E0DC
+
+*foreground: #D7D0C7
+*background: #151515
+
+!black
+*color0:     #333333
+*color8:     #404040
+!red
+*color1:     #E84F4F
+*color9:     #D23D3D
+!green
+*color2:     #B8D68C
+*color10:    #A0CF5D
+!yellow
+*color3:     #E1AA5D
+*color11:    #F39D21
+!blue
+*color4:     #7DC1CF
+*color12:    #4E9FB1
+!magenta
+*color5:     #9B64FB
+*color13:    #8542FF
+!cyan
+*color6:     #6D878D
+*color14:    #42717B
+!white
+*color7:     #dddddd
+*color15:    #dddddd
+
+URxvt*borderColor:        #151515
+URxvt*colorBD:            #ffffff
+URxvt*cursorColor:        #ff8939
+URxvt*cursorColor2:       #151515
+
 
 ! Dat font
 urxvt*font: 			       xft:uushi:pixelsize=9:antialias=true:hinting=true
@@ -69,8 +103,8 @@ URxvt*geometry:          80x20
 URxvt.internalBorder:    1 
 URxvt.borderColor:       #EBEBEB
 URxvt*cursorBlink:       True
-URxvt*cursorColor:       #999999
-URxvt*colorBD:           #FFFFFF
+!URxvt*cursorColor:       #999999
+!URxvt*colorBD:           #FFFFFF
 URxvt*colorUL:           #9DBA3A
 URxvt*mapAlert:          True
 URxvt*urgentOnBell:      True
@@ -79,6 +113,7 @@ URxvt*cursorUnderline:   True
 
 
 !Perl extensions
+URxvt.perl-lib: /home/kopri/lib/perl/
 URxvt.perl-ext-common :  default,matcher,clipboard,url-select,keyboard-select
 
 URxvt*keysym.M-u: perl:url-select:select_next
@@ -103,6 +138,8 @@ URxvt.tabbed.tab-fg:    14
 URxvt.tabbed.tab-bg:    0
 
 !clipboard
+URxvt.clipboard.copycmd:  xclip -i -selection clipboard
+URxvt.clipboard.pastecmd: xclip -o -selection clipboard
 URxvt.keysym.M-c:   perl:clipboard:copy
 URxvt.keysym.M-v:   perl:clipboard:paste
 URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
