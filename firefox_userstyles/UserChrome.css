@@ -6,7 +6,7 @@
 
 .tabbrowser-tab[fadein]:not([pinned]){
     min-width: 0px !important;
-    max-width: 115px !important;
+    max-width: 2000px !important;
 }
 
 #urlbar .autocomplete-history-dropmarker{
@@ -51,7 +51,7 @@
 
 .tabbrowser-tab[selected=true], .tabbrowser-tab[selected=true]:hover {
     box-shadow: inset 0px 0px 0px rgba(0,0,0,0.12) !important;
-    background: #9DBA3A !important;
+    background: #E84F4F !important;
     color: #151515 !important;
     
 }#urlbar > #urlbar-icons > #star-button
