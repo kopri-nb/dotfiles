@@ -1,0 +1,72 @@
+"" general settings
+set autocomplete=true
+colors kopri
+set! browser.download.manager.showWhenStarting=false
+set! browser.tabs.closeWindowWithLastTab=false
+set hintchars=hjklasdfgyuiopqwertnmzxcvb
+set hlsearch
+set history=50
+set urlseparator=;
+set incsearch
+set ignorecase
+set smartcase
+set hinttags="//*[@onclick or @onmouseover or @onmousedown or @onmouseup or @oncommand or @class='lk' or @role='link' or @role='button' or @role='option'] | //input[not(@type='hidden')] | //a | //area | //iframe | //textarea | //button | //select | //xhtml:input[not(@type='hidden')] | //xhtml:a | //xhtml:area | //xhtml:iframe | //xhtml:textarea | //xhtml:button | //xhtml:select"
+
+source /home/kopri/.vimperator/plugins/statstat.js
+source /home/kopri/.vimperator/plugins/mpd-currentsong.js
+source /home/kopri/.vimperator/plugins/hash.js
+source /home/kopri/.vimperator/plugins/contrast.js
+source /home/kopri/.vimperator/plugins/lowlight.js
+source /home/kopri/.vimperator/plugins/noscript.js
+source /home/kopri/.vimperator/plugins/readability.js
+source /home/kopri/.vimperator/plugins/stylish.js
+
+
+"""" Downloads
+noremap  <C-j> <C-t>:downloads<CR>
+inoremap <C-j> <Esc><C-t>:downloads<CR>
+cnoremap <C-j> <C-t>:downloads<CR>
+
+
+"" key bindings and remappings
+noremap j 5j
+noremap k 5k
+noremap h 3h
+noremap l 3l
+"noremap J gT
+"noremap K gt
+noremap J <C-d>
+noremap K <C-u>
+noremap H gT
+noremap L gt
+noremap U :ba<cr>
+noremap I :fo<cr>
+noremap i gi
+noremap R :source ~/.vimperatorrc<cr>
+
+"" bookmarks/commonly visited sites
+map <C-1> thttps://boards.4chan.org/mu/<Return>
+map <C-2> tgithub.com<Return>
+map <C-3> treddit.com<Return>
+map <C-4> tlast.fm<Return>
+map <C-5> ttapmusic.net/lastfm<Return>
+map <C-6> trateyourmusic.com<Return>
+map <C-7> ttwitter.com<Return>
+map <C-8> thttps://www.facebook.com<Return>
+map <C-9> trutracker.org<Return>
+map <C-0> thttps://what.cd<Return>
+
+
+"" hide bar with ctrl-f1
+map <silent> <C-F1> :js toggle_bottombar()<CR>
+
+:js << EOF
+function toggle_bottombar() {
+    var bb = document.getElementById('liberator-bottombar');
+    if (!bb)
+        return;
+    bb.style.height = (bb.style.height == '') ? '0px' : '';
+    bb.style.overflow = (bb.style.height == '') ? '' : 'hidden';
+    }
+EOF
+
