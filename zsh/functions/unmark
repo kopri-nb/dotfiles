@@ -1,0 +1,3 @@
+function unmark { 
+    rm -i $MARKPATH/$1 
+}
