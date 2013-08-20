@@ -3,31 +3,22 @@
 xset +fp /home/kopri/.fonts/
 xset fp rehash 
 xrdb -merge ~/.Xresources
+xsetroot -cursor_name left_ptr
 
-#Start a D-Bus session
-source /etc/X11/xinit/xinitrc.d/80-dbus
-
-#Start GNOME Keyring
-
-#eval $(/usr/bin/gnome-keyring-daemon --start --components=gpg,pkcs11,secrets,ssh)
-#You probably need to do this too:
-#export SSH_AUTH_SOCK
-#export GPG_AGENT_INFO
-#export GNOME_KEYRING_CONTROL
-#export GNOME_KEYRING_PID
-
-#ogg123 -q "/home/kopri/bin/mgs-sounds/konami_sequence.ogg" &
+ogg123 -q "/home/kopri/misc/systemsounds/mgs/start.ogg" &
 
 urxvtd -q -o -f 
 
-feh --bg-tile /home/kopri/images/pattern/dark_mosaic.png &
+feh --bg-tile /home/kopri/images/pattern/outlets/outlets.png &
 
-unclutter -idle 10 -jitter 5 &
+unclutter -idle 1 -jitter 5 &
 
 xbindkeys &
 
 mpd &
 
-xscreensaver -no-splash &
+xautolock -time 10 -locker slock
 
-exec wmrun.sh
+conky | bar &
+
+exec cwm
