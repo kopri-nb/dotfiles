@@ -1,1 +1,0 @@
-cdf () { cd "$(dirname "$(locate -i "$*" | head -n 1)")" ; }
