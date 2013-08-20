@@ -1,0 +1,50 @@
+# Set default Xft(3) font
+fontname "uushi"
+
+# Turn on sticky-group mode
+sticky yes
+
+# Any entry here is shown in the application menu
+command term            urxvtc
+command editor          "urxvtc -e vim"
+command internet        firefox
+command filemanager     spacefm
+command tmux            "urxvtc -e tmux"
+command irc             "urxvtc -e weechat-curses"
+command proc            "urxvtc -e htop"
+command mail            "urxvrc -e mutt"
+command ranger          "urxvtc -e ranger"
+
+# Ignore programs by that name by not drawing borders around them.
+# ignore bar
+# ignore wbar
+
+# automatic grouping for specific windows
+
+
+# behavior, look & feel
+borderwidth           4
+
+color activeborder     "#A0CF5D"
+color inactiveborder   "#E84F4F"
+color font            "#D0C7D7"
+color selfont          "#e8e9ca"
+color menubg          "#151515"
+color menufg          "#D0C7D7"
+color groupborder     "#2244ac"
+color ungroupborder   "#ac4422"
+
+gap                     10 40 10 10
+moveamount              4
+snapdist                0
+
+
+     
+bind CM-r       restart
+bind CM-q       quit
+bind CM-Enter    term
+
+# Mousebindings
+mousebind M-1   window_move
+mousebind M-2   window_grouptoggle
+mousebind M-3   window_resize
