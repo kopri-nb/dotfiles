@@ -1,6 +1,0 @@
-#!/bin/zsh
-
-if [ -d ~/.local/share/Trash/files ]; then
-rm -rf /home/kopri/.local/share/Trash/* &>/dev/null
-fi
-exit

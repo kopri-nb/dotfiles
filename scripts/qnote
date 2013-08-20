@@ -1,5 +1,0 @@
-#!/bin/zsh
-
-delay=$1
-shift
-(sleep $delay ; zenity --info --text="$*") > /dev/null &

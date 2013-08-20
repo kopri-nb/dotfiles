@@ -1,1 +1,0 @@
-/home/kopri/.weechat/perl/buffers.pl

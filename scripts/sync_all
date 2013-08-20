@@ -1,9 +1,0 @@
-#!/bin/zsh
-
-equo update
-
-emerge --sync
-
-layman -S
-
-eix-update
