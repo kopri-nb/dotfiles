@@ -1,0 +1,4 @@
+# Search google for the given keywords.
+function google; {
+        $VIEW "http://www.google.com/search?q=`url-encode "${(j: :)@}"`"
+}
