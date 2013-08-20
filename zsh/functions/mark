@@ -1,4 +1,0 @@
-# make ln in ~/.marks to auto jump there with j function
-function mark { 
-    mkdir -p $MARKPATH; ln -s $(pwd) $MARKPATH/$1
-}
