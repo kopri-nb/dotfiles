@@ -20,13 +20,17 @@ command ranger          "urxvtc -e ranger"
 # ignore wbar
 
 # automatic grouping for specific windows
-
+autogroup 2              "firefox,spacefm"
+autogroup 3              "urxvtc,vim"
+autogroup 4              "transmission-gtk,rtorrent"
 
 # behavior, look & feel
-borderwidth           4
+borderwidth           7
 
-color activeborder     "#A0CF5D"
-color inactiveborder   "#E84F4F"
+#color activeborder     "#A0CF5D"
+#color inactiveborder   "#E84F4F"
+color activeborder     "#1D1D1D"
+color inactiveborder   "#1A1A1A"
 color font            "#D0C7D7"
 color selfont          "#e8e9ca"
 color menubg          "#151515"
@@ -38,7 +42,7 @@ gap                     10 40 10 10
 moveamount              4
 snapdist                0
 
-
+bind C-/ unmap
      
 bind CM-r       restart
 bind CM-q       quit

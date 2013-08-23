@@ -1,5 +1,8 @@
 @namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
 
+#statusbar-display {display: none !important;}
+
+
 #appmenu-toolbar-button{
     display: none !important;
 }
@@ -32,13 +35,13 @@
     padding-left: 0px !important;
     padding-right: 0px !important;
     padding-bottom: 0px !important;
-    border-bottom: 0px solid #bdbdbd !important;
+    border-bottom: 0px solid #E84F4F !important;
 }
 
 .tabbrowser-tab {
-    border: 0px solid #EBEBEB !important;
-    border-left: 1px solid #EBEBEB !important;
-    border-right: 1px solid #EBEBEB !important;
+    border: 0px solid #E84F4F !important;
+    border-left: 0px solid #1A1A1A !important;
+    border-right: 0px solid #1A1A1A !important;
     border-radius: 0px !important;
     padding-left: 0px !important;
     padding-right: 0px !important;
@@ -51,8 +54,8 @@
 
 .tabbrowser-tab[selected=true], .tabbrowser-tab[selected=true]:hover {
     box-shadow: inset 0px 0px 0px rgba(0,0,0,0.12) !important;
-    background: #E84F4F !important;
-    color: #151515 !important;
+    background: #333333 !important;
+    color: #eeeeee !important;
     
 }#urlbar > #urlbar-icons > #star-button
 {
@@ -60,7 +63,7 @@ display: none !important;
 }#urlbar > #urlbar-icons > #star-button
 {
 display: none !important;
-}#content browser { margin-right:-14px!important; overflow-y:scroll; overflow-x:hidden;}
+}#content browser { margin-right:-14px!important; overflow-y:scroll; overflow-x:scroll;}
 .tab-icon-image {
 visibility: hidden!important;
 margin-left: -8px;
