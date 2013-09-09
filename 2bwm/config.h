@@ -5,9 +5,11 @@
 /* Move this many pixels when moving or resizing with keyboard unless the window has hints saying otherwise.
  *0)move step slow   1)move step fast
  *2)mouse slow       3)mouse fast     */
-static const uint16_t movements[] = {10,40,15,400};
+static const uint16_t movements[] = {10,40,15,450};
 /* resize by line like in mcwm -- jjumbi */
-static const bool     resize_by_line = true;
+static const bool     resize_by_line          = true;
+/* the ratio used when resizing and keeping the aspect */
+static const float    resize_keep_aspect_ratio= 1.03;
 ///---Offsets---///
 /*0)offsetx          1)offsety
  *2)maxwidth         3)maxheight */
@@ -17,12 +19,14 @@ static const uint8_t offsets[] = {0,0,0,0};
  *2)fixedcol         3)unkilcol
  *4)fixedunkilcol    5)outerbordercol
  *6)emptycol         */
-static const char *colors[] = {"#9DBA3A","#333333","#BF1E2D","#682a2a","#604818","#121212","#222222"};
+static const char *colors[] = {"#1C1C1C","#1A1A1A","#E84F4F","#E1AA5D","#604818","#121212","#222222"};
+/* if this is set to true the inner border and outer borders colors will be swapped */
+static const bool inverted_colors = false;
 ///---Borders---///
 /*0) Outer border size. If you put this negative it will be a square.
  *1) Full borderwidth    2) Magnet border size    
  *3) Resize border size  */
-static const uint8_t borders[] = {2,8,9,9};
+static const uint8_t borders[] = {1,9,9,9};
 /* Windows that won't have a border.*/
 #define NB_NAMES 1
 #define LOOK_INTO "_NET_WM_NAME"
@@ -33,6 +37,7 @@ static const char *ignore_names[] = {"bar"};
 #define CURSOR_RESIZING 120
 ///--Menus and Programs---///
 static const char *menucmd[]   = { "/usr/bin/my_menu.sh", NULL };
+static const char *gmrun[]     = { "/usr/bin/gmrun",NULL};
 static const char *terminal[]  = { "urxvtc", NULL };
 static const char *twobwm_path = "/usr/local/bin/2bwm";
 ///---Shortcuts---///
@@ -82,6 +87,10 @@ static key keys[] = {
     // Teleport the window to an area of the screen.
     // Center:
     {  MOD ,              XK_g,          teleport,          {.i=0}},
+    // Center y:
+    {  MOD |SHIFT,        XK_g,          teleport,          {.i=3}},
+    // Center x:
+    {  MOD |CONTROL,      XK_g,          teleport,          {.i=-3}},
     // Top left:
     {  MOD ,              XK_y,          teleport,          {.i=2}},
     // Top right:
@@ -90,11 +99,13 @@ static key keys[] = {
     {  MOD ,              XK_b,          teleport,          {.i=1}},
     // Bottom right:
     {  MOD ,              XK_n,          teleport,          {.i=-1}},
-    // Resize whle keeping the window aspect
+    // Resize while keeping the window aspect
     {  MOD ,              XK_Home,       resizestep_aspect, {.i=0}},
     {  MOD ,              XK_End,        resizestep_aspect, {.i=1}},
     // Full screen window without borders
-    {  MOD ,              XK_x,          maximize,          {.i=0}},
+    {  MOD ,              XK_x,         maximize,          {.i=0}},
+    //Full screen window without borders overiding offsets
+    {  MOD |SHIFT ,       XK_x,          maximize,          {.i=1}},
     // Maximize vertically
     {  MOD ,              XK_m,          maxvert_hor,       {.i=1}},
     // Maximize horizontally
@@ -125,7 +136,7 @@ static key keys[] = {
     {  MOD ,              XK_v,          nextworkspace,     {.i=0}},
     {  MOD ,              XK_c,          prevworkspace,     {.i=0}},
     // Iconify the window
-//    {  MOD ,              XK_i,          hide,              {.i=0}},
+    {  MOD ,              XK_i,          hide,              {.i=0}},
     // Make the window unkillable
     {  MOD ,              XK_a,          unkillable,        {.i=0}},
     // Make the window appear always on top
@@ -145,6 +156,7 @@ static key keys[] = {
     // Start programs
     {  MOD ,              XK_Return,     start,             {.com = terminal}},
     {  MOD ,              XK_w,          start,             {.com = menucmd}},
+    {  MOD |SHIFT,        XK_w,          start,             {.com = gmrun}},
     // Exit or restart 2bwm
     {  MOD |CONTROL,      XK_q,          twobwm_exit,         {.i=0}},
     {  MOD |CONTROL,      XK_r,          twobwm_restart,      {.i=0}},
@@ -164,4 +176,8 @@ static Button buttons[] = {
     {  MOD        ,XCB_BUTTON_INDEX_1,     mousemotion,   {.i=TWOBWM_MOVE}},
     {  MOD        ,XCB_BUTTON_INDEX_3,     mousemotion,   {.i=TWOBWM_RESIZE}},
     {  MOD|CONTROL,XCB_BUTTON_INDEX_3,     start,         {.com = menucmd}},
+    {  MOD|SHIFT,  XCB_BUTTON_INDEX_1,     changeworkspace, {.i=0}},
+    {  MOD|SHIFT,  XCB_BUTTON_INDEX_3,     changeworkspace, {.i=1}},
+    {  MOD|ALT,    XCB_BUTTON_INDEX_1,     changescreen,    {.i=1}},
+    {  MOD|ALT,    XCB_BUTTON_INDEX_3,     changescreen,    {.i=0}}
 };
