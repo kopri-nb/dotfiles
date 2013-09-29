@@ -1,6 +1,6 @@
 //MPD Settings
 mpd_crossfade_time = "3"
-mpd_music_dir = "/media/Data/music"
+mpd_music_dir = "/mnt/data/music"
 
 /* UI */
 song_list_format = " {$2%a$1 - }{$8%t$1}$R{$1%l} "
