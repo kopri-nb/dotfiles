@@ -1,7 +1,6 @@
 # Syntax Highlighting
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor) 
-source $HOME/etc/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source $HOME/etc/zsh/zsh-syntax-highlighting/live
+source $HOME/etc/zsh/zsh-syntax-highlighting.zsh
 
 # STYLES
 # Aliases and functions
