@@ -1,5 +1,5 @@
-#compdef pass
-#autoload
+compdef pass
+autoload
 
 # Copyright (C) 2012:
 # Johan Venant <jvenant@invicem.pro>

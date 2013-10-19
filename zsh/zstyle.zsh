@@ -34,7 +34,7 @@ zstyle ':completion:*'                       list-dirs-first true
 zstyle ':completion:*:default'               list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*'                       menu select=200
 zstyle ':completion:*'                       use-perl=1
-zstyle ':completion:*'                       my-accounts='m@japh.se'
+zstyle ':completion:*'                       my-accounts='kopri@unixhub.net'
 
 zstyle ':completion:*'                       squeeze-slashes true
 zstyle ':completion:*:cd:*'                  ignore-parents parent pwd
