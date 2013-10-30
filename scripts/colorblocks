@@ -1,0 +1,5 @@
+#!/bin/zsh
+
+echo; for i in {00..7}; do echo -en "\e[0;$((30+$i))m ${colors[i]} \u2588\u2588 \e[0m"; done
+echo; for i in {8..15}; do echo -en "\e[1;$((22+$i))m ${colors[i]} \u2588\u2588 \e[0m"; done
+echo
